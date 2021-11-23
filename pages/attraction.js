@@ -13,16 +13,16 @@ export default function Attraction() {
 
           if ($(window).scrollTop() > 10) {
             $('.navbar').addClass('active');
-            $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+            $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
 
           } else {
             $('.navbar').removeClass('active');
-            $('#cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "150");
+            $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "125");
           }
         });
       } else {
         $('.navbar').addClass('active');
-        $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+        $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
       }
     });
   });
@@ -51,13 +51,13 @@ export default function Attraction() {
         <div className="pt-5 text-white text-center" style={{ position: "relative" }}>
           <div className="py-5 mt-5">
 
-            <h1 className="" style={{ fontWeight: 900, letterSpacing: '2px', fontSize: '50px' }}>Hamilton Monument</h1>
+            <h1 className="attraction-title" style={{ fontWeight: 900, letterSpacing: '2px', fontSize: '50px' }}>Hamilton Monument</h1>
 
           </div>
 
 
 
-          <section className="container text-dark pt1-tours">
+          <section className="container text-dark attraction-section">
 
             <div className="row justify-content-center text-left pt-5">
               <div className="col-md-7 pb-5 pt-5">
@@ -76,20 +76,29 @@ export default function Attraction() {
                 </p>
               </div>
 
-              <img src="/images/hamilton-monument.png" width="700" />
+
+            </div>
+
+            <div className="row justify-content-center">
+              <div className="col-md-9">
+
+                <img src="/images/hamilton-monument.png" width="100%" />
+
+              </div>
+
 
             </div>
 
             <div className="row justify-content-center pt-5">
 
-              <h2 class="text-uppercase py-4" style={{ color: '#4c4a4b', fontWeight: 800 }}>You'll see on</h2>
+              <h2 className="text-uppercase py-4" style={{ color: '#4c4a4b', fontWeight: 800 }}>You'll see on</h2>
 
               <div className="col-md-10">
 
                 {/* cards */}
                 <div className="card-group pt-3">
 
-                  <div className="card card-v mx-4">
+                  <div className="card card-v mx-45">
 
 
                     <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
@@ -118,9 +127,9 @@ export default function Attraction() {
                     <div className="card-body" style={{ marginTop: -20 }}>
                       <h5 style={{ color: '#535150', fontSize: '18px' }} className="card-title text-left text-uppercase font-weight-bold pt-3 pb-1">Central Park Bike Tour</h5>
 
-                      <div className="row text-uppercase pb-4">
-                        <div style={{ fontSize: 12 }} className="col text-left ">Price from <b style={{ fontSize: 18 }}>$59</b> usd</div>
-                        <div style={{ fontSize: 12 }} className="col text-right">Duration <b> 2h</b></div>
+                      <div className="row pb-4">
+                        <div style={{ fontSize: 12 }} className="col text-left text-uppercase">Price from <b style={{ fontSize: 18, color: '#88bc2c' }}>$59</b> usd</div>
+                        <div style={{ fontSize: 12 }} className="col text-right">DURATION <b> 2h</b></div>
                       </div>
 
                       <p style={{ fontSize: 14 }} className="text-left">
@@ -160,7 +169,7 @@ export default function Attraction() {
                     </div>
                   </div>
 
-                  <div className="card card-v mx-4">
+                  <div className="card card-v mx-45">
 
 
                     <div id="carouselExampleControls2" className="carousel slide" data-ride="carousel">
@@ -189,9 +198,9 @@ export default function Attraction() {
                     <div className="card-body" style={{ marginTop: -20 }}>
                       <h5 style={{ color: '#535150', fontSize: '18px' }} className="card-title text-left text-uppercase font-weight-bold pt-3 pb-1">Central Park Pedicab Tour</h5>
 
-                      <div className="row text-uppercase pb-4">
-                        <div style={{ fontSize: 12 }} className="col text-left ">Price from <b style={{ fontSize: 18 }}>$53</b> usd</div>
-                        <div style={{ fontSize: 12 }} className="col text-right">Duration <b> 1h</b></div>
+                      <div className="row pb-4">
+                        <div style={{ fontSize: 12 }} className="col text-left text-uppercase">Price from <b style={{ fontSize: 18, color: '#88bc2c' }}>$53</b> usd</div>
+                        <div style={{ fontSize: 12 }} className="col text-right">DURATION <b> 1h</b></div>
                       </div>
 
                       <p style={{ fontSize: 14 }} className="text-left">

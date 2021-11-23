@@ -21,7 +21,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "checkout.js/api/payment_intents/indextss",
+    "checkout.js/donate-with-elementstsxx"
   ],
   "exclude": [
     "node_modules"

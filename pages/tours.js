@@ -13,22 +13,22 @@ export default function Tours() {
 
           if ($(window).scrollTop() > 10) {
             $('.navbar').addClass('active');
-            $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+            $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
 
           } else {
             $('.navbar').removeClass('active');
-            $('#cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "150");
+            $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "125");
           }
         });
       } else {
         $('.navbar').addClass('active');
-        $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+        $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
       }
     });
   });
 
   useEffect(() => {
-    document.documentElement.scrollTop = 1;
+    document.documentElement.scrollTop = 0;
 
   }, [])
 
@@ -41,7 +41,7 @@ export default function Tours() {
 
         <div className="tours-header text-white" style={{ position: "relative" }}>
 
-          <h1 className="" style={{ fontWeight: 900, letterSpacing: '2px', fontSize: '50px' }}>Tours</h1>
+          <h1 className="tours-title" style={{ fontWeight: 900, letterSpacing: '2px', fontSize: '50px' }}>Tours</h1>
 
           <p className="lead mb-0 pt-3">
             <b>We are the leader in providing bike rentals and various tours in New York.</b>
@@ -59,7 +59,7 @@ export default function Tours() {
             <div className="col-xs-12 col-md-9 col-lg-12">
 
               {/* cards */}
-              <div className="card-group pt-5">
+              <div className="card-group cards-section">
 
                 <div className="card card-v mx-70">
 
@@ -90,9 +90,9 @@ export default function Tours() {
                   <div className="card-body" style={{ marginTop: -20 }}>
                     <h5 style={{ color: '#535150', fontSize: '18px' }} className="card-title text-left text-uppercase font-weight-bold pt-3 pb-1">Central Park Bike Tour</h5>
 
-                    <div className="row text-uppercase pb-4">
-                      <div style={{ fontSize: 12 }} className="col text-left ">Price from <b style={{ fontSize: 18 }}>$59</b> usd</div>
-                      <div style={{ fontSize: 12 }} className="col text-right pt-1">Duration <b> 2h</b></div>
+                    <div className="row pb-4">
+                      <div style={{ fontSize: 12 }} className="col text-left text-uppercase">Price from <b style={{ fontSize: 18, color: '#88bc2c' }}>$59</b> usd</div>
+                      <div style={{ fontSize: 12 }} className="col text-right pt-1">DURATION <b> 2h</b></div>
                     </div>
 
                     <p style={{ fontSize: 14, color: '#8b8b8b' }} className="text-left">
@@ -161,9 +161,9 @@ export default function Tours() {
                   <div className="card-body" style={{ marginTop: -20 }}>
                     <h5 style={{ color: '#535150', fontSize: '18px' }} className="card-title text-left text-uppercase font-weight-bold pt-3 pb-1">Central Park Pedicab Tour</h5>
 
-                    <div className="row text-uppercase pb-4">
-                      <div style={{ fontSize: 12 }} className="col text-left ">Price from <b style={{ fontSize: 18 }}>$53</b> usd</div>
-                      <div style={{ fontSize: 12 }} className="col text-right pt-1">Duration <b> 1h</b></div>
+                    <div className="row pb-4">
+                      <div style={{ fontSize: 12 }} className="col text-left text-uppercase">Price from <b style={{ fontSize: 18, color: '#88bc2c' }}>$53</b> usd</div>
+                      <div style={{ fontSize: 12 }} className="col text-right pt-1">DURATION <b> 1h</b></div>
                     </div>
 
                     <p style={{ fontSize: 14, color: '#8b8b8b' }} className="text-left">

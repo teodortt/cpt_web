@@ -96,16 +96,16 @@ export default Jquery;
 
 //         if ($(window).scrollTop() > 10) {
 //           $('.navbar').addClass('active');
-//           $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+//           $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
 
 //         } else {
 //           $('.navbar').removeClass('active');
-//           $('#cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "150");
+//           $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "150");
 
 //         }
 //       } else {
 //         $('.navbar').addClass('active');
-//         $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+//         $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
 //       }
 //     });
 //   });

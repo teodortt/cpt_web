@@ -9,12 +9,16 @@
     "export": "npm run build && next export -o _static"
   },
   "dependencies": {
+    "@mantine/core": "^3.2.2",
+    "@mantine/hooks": "^3.2.2",
     "@splidejs/react-splide": "^0.4.4",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.17.1",
     "antd": "^4.16.13",
     "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "firebase": "^9.5.0",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
@@ -22,16 +26,19 @@
     "next": "^10.2.3",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",
+    "nookies": "^2.5.2",
     "react": "^17.0.2",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-datepicker": "^4.3.0",
     "react-dom": "^17.0.2",
     "react-google-recaptcha": "^2.1.0",
+    "react-hook-form": "^7.19.5",
     "stripe": "^8.174.0",
     "svg-sprite-loader": "^6.0.7",
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.34",
-    "typescript": "^4.4.4"
+    "@types/react": "^17.0.35",
+    "typescript": "^4.5.2"
   }
 }

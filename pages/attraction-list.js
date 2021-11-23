@@ -13,16 +13,16 @@ export default function AttractionList() {
 
           if ($(window).scrollTop() > 10) {
             $('.navbar').addClass('active');
-            $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+            $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
 
           } else {
             $('.navbar').removeClass('active');
-            $('#cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "150");
+            $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "125");
           }
         });
       } else {
         $('.navbar').addClass('active');
-        $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+        $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
       }
     });
   });
@@ -66,15 +66,15 @@ export default function AttractionList() {
 
           <section className="container text-dark attractions-section pt-4">
 
-            <div className="row justify-content-center align-items-center py-5">
+            <div className="row justify-content-center align-items-center py-5 pr-50">
 
               <div className="col-sm-6">
                 <div className="circle-right">1</div>
-                <img src="/images/hamilton-monument.png" className="attr-image" width='100%' />
+                <img src="/images/hamilton-monument.png" className="attr-image" />
               </div>
 
-              <div className="col-sm-6 text-left">
-                <h2 class="text-uppercase pb-4" style={{ color: '#4c4a4b', fontWeight: 800 }}>Hamiltion Monument</h2>
+              <div className="col-sm-5 text-left">
+                <h2 className="pb-4" style={{ color: '#4c4a4b', fontWeight: 800 }}>Hamiltion Monument</h2>
 
                 <p>
                   Alexander Hamilton is one of the Founding Father of the US. The statue that was place in the Park was carved by Carl H. Conrads in 1880, and was donated by one of Hamilton’s sons — John C. Hamilton.
@@ -85,14 +85,14 @@ export default function AttractionList() {
                   <a href="/" className="readmore"> Read More</a>
 
                   <div className="row d-flex pt-3 align-items-center">
-                    <div className="col-sm-4">
+                    <div className="col-sm-5">
                       <b>Accessibility 80%</b>
                     </div>
 
 
-                    <div className="col-sm-8">
+                    <div className="col-sm-7">
 
-                      <div className="ml-5 slide_percentage">
+                      <div className="slide_percentage">
                         <div className="slider_1"></div>
                       </div>
 
@@ -100,14 +100,14 @@ export default function AttractionList() {
                   </div>
 
                   <div className="row d-flex pt-3 align-items-center">
-                    <div className="col-sm-4">
+                    <div className="col-sm-5">
                       <b>Popularity 30%</b>
                     </div>
 
 
-                    <div className="col-sm-8">
+                    <div className="col-sm-7">
 
-                      <div className="ml-5 slide_percentage">
+                      <div className="slide_percentage">
                         <div className="slider_2"></div>
                       </div>
 
@@ -125,15 +125,15 @@ export default function AttractionList() {
 
             </div>
 
-            <div class="row justify-content-center">
-              <img style={{ marginTop: '-50px' }} src="/images/dott-2.png" className="attr-image" width='60%' />
+            <div className="curved-line-left">
+              <img src="/images/dott-2.png" width="100%" />
             </div>
 
-            <div className="row justify-content-center align-items-center py-5">
+            <div className="row justify-content-center align-items-center pt-1 pl-50">
 
 
-              <div className="col-sm-6 text-left col1">
-                <h2 class="text-uppercase pb-4" style={{ color: '#4c4a4b', fontWeight: 800 }}>Alice in Wonderland</h2>
+              <div className="col-sm-5 text-left col1">
+                <h2 className="pb-4" style={{ color: '#4c4a4b', fontWeight: 800 }}>Alice in Wonderland</h2>
 
                 <p>
                   Central Park is an amazing place for people of all ages, full of places and "characters" that can feel close to literally everyone!
@@ -143,14 +143,14 @@ export default function AttractionList() {
 
 
                   <div className="row d-flex pt-3 align-items-center">
-                    <div className="col-sm-4">
+                    <div className="col-sm-5">
                       <b>Accessibility 80%</b>
                     </div>
 
 
-                    <div className="col-sm-8">
+                    <div className="col-sm-7">
 
-                      <div className="ml-5 slide_percentage">
+                      <div className="slide_percentage">
                         <div className="slider_1"></div>
                       </div>
 
@@ -158,14 +158,14 @@ export default function AttractionList() {
                   </div>
 
                   <div className="row d-flex pt-3 align-items-center">
-                    <div className="col-sm-4">
+                    <div className="col-sm-5">
                       <b>Popularity 30%</b>
                     </div>
 
 
-                    <div className="col-sm-8">
+                    <div className="col-sm-7">
 
-                      <div className="ml-5 slide_percentage">
+                      <div className="slide_percentage">
                         <div className="slider_2"></div>
                       </div>
 
@@ -190,8 +190,8 @@ export default function AttractionList() {
 
             </div>
 
-            <div class="row justify-content-center">
-              <img style={{ marginTop: '-50px' }} src="/images/dott.png" className="attr-image" width='60%' />
+            <div className="curved-line-right">
+              <img src="/images/dott.png" width='100%' />
             </div>
 
           </section>

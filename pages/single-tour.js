@@ -1,16 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import TourNav from '../components/TourNav'
+import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
-import ReserveBtn from '../components/ReserveBtn'
+import ReserveForm from '../components/ReserveForm'
 // import ReserveMobile from '../components/ReserveMobile'
 import DatePicker from "react-datepicker";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import "react-datepicker/dist/react-datepicker.css";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+    Elements,
+} from "@stripe/react-stripe-js";
+// import { CheckoutForm } from "./CheckoutForm";
+
+const stripeProme = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
+
 
 // import StripeCheckout from '../components/makqti'
 
 export default function Single() {
+    const [status, setStatus] = useState("");
+    console.log("status", status);
+
+    // debugger;
+    if (status === "success") {
+        return <div>Thank you for your purchase!</div>;
+    }
+
+    if (status.includes("Something went wrong")) {
+        return <div>Something went wrong</div>;
+    }
+
     const [price, setPrice] = useState(7);
     const [open, setOpen] = useState(false);
 
@@ -29,7 +51,9 @@ export default function Single() {
         kids: 1,
         subtotal: 0,
         total: 0,
-        tax: 0
+        tax: 0,
+        discount: null,
+        discountCode: ''
     })
 
     const CustomInput = React.forwardRef(({ value, onClick }, ref) => {
@@ -87,10 +111,10 @@ export default function Single() {
         document.addEventListener("scroll", function () {
             if (document.documentElement.scrollTop > 3000) document.getElementsByClassName('sidebar')[0].style.display = 'none';
             else {
-                if (window.innerWidth > 1150) {
+                if (window.innerWidth > 1150 && document.getElementsByClassName('sidebar')[0]) {
                     document.getElementsByClassName('sidebar')[0].style.display = 'block';
                 } else {
-                    document.getElementsByClassName('sidebar')[0].style.display = 'none';
+                    if (document.getElementsByClassName('sidebar')[0]) document.getElementsByClassName('sidebar')[0].style.display = 'none';
 
                 }
             }
@@ -105,31 +129,31 @@ export default function Single() {
 
     //           if ($(window).scrollTop() > 10) {
     //             $('.navbar').addClass('active');
-    //             $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+    //             $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
 
     //           } else {
     //             $('.navbar').removeClass('active');
-    //             $('#cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "150");
+    //             $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "150");
     //           }
     //         });
     //       } else {
     //         $('.navbar').addClass('active');
-    //         $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
+    //         $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
     //       }
     //     });
     //   });
 
-    //   useEffect(() => {
-    //     document.documentElement.scrollTop = 1;
+    useEffect(() => {
+        document.documentElement.scrollTop = 1;
 
-    //   }, [])
+    }, [])
     const hhhandle = () => {
         console.log(startDate)
     }
 
     return (
         <div>
-            <div class="container" id="container">
+            <div className="container" id="container">
                 <div className="square square-2"></div>
                 <div className="square square-1"></div>
                 <div className="square square-4"></div>
@@ -137,14 +161,14 @@ export default function Single() {
                 <div className="square square-5"></div>
             </div>
 
-            <TourNav />
+            <NavBar />
             <div className="container-fluid bg-single-tour pl-0 pr-0">
 
                 {/* <StripeCheckout /> */}
 
-                <div class="container" style={{ paddingTop: '200px', paddingBottom: '100px' }}>
-                    <div class="row">
-                        <div class="col-md-12 col-lg-8">
+                <div className="container" style={{ paddingTop: '200px', paddingBottom: '100px' }}>
+                    <div className="row">
+                        <div className="col-md-12 col-lg-8">
                             <h1 style={{ color: '#4c4a4b', textShadow: '2px 0px currentColor' }}>Central Park Bike Tour</h1>
 
                             <div className="col d-flex pb-4 pt-1">
@@ -158,28 +182,28 @@ export default function Single() {
                             </div>
 
 
-                            <div id="custCarousel" class="carousel slide" data-ride="carousel" align="center">
+                            <div id="custCarousel" className="carousel slide" data-ride="carousel" align="center">
                                 {/* <!-- slides --> */}
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    <div class="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    <div class="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    <div class="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    <div class="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    {/* <div class="carousel-item"> <img src="https://i.imgur.com/weXVL8M.jpg" alt="Hills"/> </div>
-                    <div class="carousel-item"> <img src="https://i.imgur.com/Rpxx6wU.jpg" alt="Hills"/> </div>
-                    <div class="carousel-item"> <img src="https://i.imgur.com/83fandJ.jpg" alt="Hills"/> </div>
-                    <div class="carousel-item"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" alt="Hills"/> </div> */}
+                                <div className="carousel-inner">
+                                    <div className="carousel-item active"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
+                                    <div className="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
+                                    <div className="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
+                                    <div className="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
+                                    <div className="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
+                                    {/* <div className="carousel-item"> <img src="https://i.imgur.com/weXVL8M.jpg" alt="Hills"/> </div>
+                    <div className="carousel-item"> <img src="https://i.imgur.com/Rpxx6wU.jpg" alt="Hills"/> </div>
+                    <div className="carousel-item"> <img src="https://i.imgur.com/83fandJ.jpg" alt="Hills"/> </div>
+                    <div className="carousel-item"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" alt="Hills"/> </div> */}
                                 </div>
                                 {/* <!-- Left right -->  */}
-                                <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel" data-slide="next"> <span class="carousel-control-next-icon"></span> </a>
+                                <a className="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span className="carousel-control-prev-icon"></span> </a> <a className="carousel-control-next" href="#custCarousel" data-slide="next"> <span className="carousel-control-next-icon"></span> </a>
                                 {/* <!-- Thumbnails --> */}
-                                <ol class="carousel-indicators list-inline">
-                                    <li style={{ marginRight: 30 }} class="list-inline-item active"> <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> <img src="https://i.imgur.com/weXVL8M.jpg" class="img-fluid" /> </a> </li>
-                                    <li style={{ marginRight: 30 }} class="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="https://i.imgur.com/Rpxx6wU.jpg" class="img-fluid" /> </a> </li>
-                                    <li style={{ marginRight: 30 }} class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="https://i.imgur.com/83fandJ.jpg" class="img-fluid" /> </a> </li>
-                                    <li style={{ marginRight: 30 }} class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" class="img-fluid" /> </a> </li>
-                                    <li class="list-inline-item"> <a id="carousel-selector-2" data-slide-to="4" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" class="img-fluid" /> </a> </li>
+                                <ol className="carousel-indicators list-inline">
+                                    <li style={{ marginRight: 30 }} className="list-inline-item active"> <a id="carousel-selector-0" className="selected" data-slide-to="0" data-target="#custCarousel"> <img src="https://i.imgur.com/weXVL8M.jpg" className="img-fluid" /> </a> </li>
+                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="https://i.imgur.com/Rpxx6wU.jpg" className="img-fluid" /> </a> </li>
+                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="https://i.imgur.com/83fandJ.jpg" className="img-fluid" /> </a> </li>
+                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" className="img-fluid" /> </a> </li>
+                                    <li className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="4" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" className="img-fluid" /> </a> </li>
                                 </ol>
                             </div>
 
@@ -215,15 +239,15 @@ export default function Single() {
 
                                             </div>
                                             <div className="form-group centered-row">
-                                                <p className="t-title">Kids (6 - 16)</p>
+                                                <p className="t-title">Kids (5+)</p>
                                                 <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids > 1 ? count.kids - 1 : 0 })}>-</div>
                                                 <input className="counter-field" type="number" value={count.kids} />
                                                 <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids + 1 })}>+</div>
                                             </div>
-                                            <p className="t-title">Duration <b> 2h</b></p>
+                                            <p className="t-title">Bike Tour - <b> 2 Hours</b></p>
                                             <p className="text-uppercase pb-3" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
                                             {/* <button className="btn-reserve">Reserve</button> */}
-                                            <ReserveBtn setHours={setHours} setMinutes={setMinutes} startDate={startDate} setStartDate={setStartDate} count={count} setCount={setCount} />
+                                            <ReserveForm setHours={setHours} setMinutes={setMinutes} startDate={startDate} setStartDate={setStartDate} count={count} setCount={setCount} />
 
                                         </div>
                                     </div>
@@ -234,7 +258,7 @@ export default function Single() {
                         {/* end sidebar */}
                         {/* <div className={`mobile-reserve-btn text-center ${open ? 'm-checkout' : ''}`} onClick={() => setOpen(true)}> */}
                         <div className="m-res text-center">
-                            <ReserveBtn setHours={setHours} setMinutes={setMinutes} startDate={startDate} setStartDate={setStartDate} count={count} setCount={setCount} />
+                            <ReserveForm setHours={setHours} setMinutes={setMinutes} startDate={startDate} setStartDate={setStartDate} count={count} setCount={setCount} />
                         </div>
                         {/* </div> */}
 
@@ -244,7 +268,7 @@ export default function Single() {
 
                 <div className="container py-5">
                     <div className="row">
-                        <div class="col-md-12 col-lg-8">
+                        <div className="col-md-12 col-lg-8">
                             <p className="pb-2">Our bicycle tour has been ranked as on the top 5 things to do in Central Park by TripAdvisor.
                                 It is the only tour that cover the entire length of Central Park and it provides an exellent
                                 overview of the whole park.
@@ -291,11 +315,11 @@ export default function Single() {
                             </div>
 
                             {/* scroll object */}
-                            {/* <div class="container" id="container">
-                                <div class="square square-1"></div>
-                                <div class="square square-2"></div>
+                            {/* <div className="container" id="container">
+                                <div className="square square-1"></div>
+                                <div className="square square-2"></div>
                             </div> */}
-                            <img src="/images/dott-2.png" className="attr-image" />
+                            <img src="/images/dott-2.png" className="tour-circle-img" />
 
 
                             <div className="row align-items-center">
@@ -315,7 +339,7 @@ export default function Single() {
 
                             </div>
 
-                            <img src="/images/dott.png" className="attr-image" />
+                            <img src="/images/dott.png" className="tour-circle-img" />
 
 
                             <div className="row align-items-center">
@@ -332,7 +356,7 @@ export default function Single() {
                                     </p>
                                 </div>
                             </div>
-                            <img src="/images/dott-2.png" className="attr-image" />
+                            <img src="/images/dott-2.png" className="tour-circle-img" />
 
                             <div className="row align-items-center">
 
@@ -357,78 +381,78 @@ export default function Single() {
                                 <h6>about this tour</h6>
                                 <hr style={{ border: '3px solid #88bc2c', borderRadius: 50, width: 100 }} />
 
-                                <div id="custCarousel2" class="carousel slide" data-ride="carousel" align="center">
+                                <div id="custCarousel2" className="carousel slide" data-ride="carousel" align="center">
 
                                     {/* <!-- slides --> */}
-                                    <div class="carousel-inner text-dark">
-                                        <div class="carousel-item active">
+                                    <div className="carousel-inner text-dark">
+                                        <div className="carousel-item active">
                                             {/* <img src="/images/centralparkbiketour.png" alt="Hills"/>  */}
                                             <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
                                                 ddddfsdfsdfhiudsfbcnikjudfvijk
                                             </div>
-                                            <div class="carousel-caption d-none d-md-block text-dark">
+                                            <div className="carousel-caption d-none d-md-block text-dark">
                                                 <h5>First slide label</h5>
                                                 {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                                             </div>
 
                                         </div>
 
-                                        <div class="carousel-item">
+                                        <div className="carousel-item">
                                             {/* <img src="/images/centralparkbiketour.png" alt="Hills"/> */}
                                             <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
                                                 aaaaaaaaaaaaaaaaa
                                             </div>
-                                            <div class="carousel-caption d-none d-md-block text-dark">
+                                            <div className="carousel-caption d-none d-md-block text-dark">
                                                 <h5>second slide label</h5>
                                                 {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                                             </div>
 
                                         </div>
 
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#custCarousel2" data-slide-to="0" class="active"></li>
+                                        <ol className="carousel-indicators">
+                                            <li data-target="#custCarousel2" data-slide-to="0" className="active"></li>
                                             <li data-target="#custCarousel2" data-slide-to="1"></li>
                                         </ol>
 
                                     </div>
                                     {/* <!-- Left right -->  */}
-                                    <a class="carousel-control-prev" href="#custCarousel2" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#custCarousel2" data-slide="next"> <span class="carousel-control-next-icon"></span> </a>
+                                    <a className="carousel-control-prev" href="#custCarousel2" data-slide="prev"> <span className="carousel-control-prev-icon"></span> </a> <a className="carousel-control-next" href="#custCarousel2" data-slide="next"> <span className="carousel-control-next-icon"></span> </a>
 
                                 </div>
                             </div>
 
 
                             <div className="text-left pt-5 mt-5" style={{ color: '#535150' }}>
-                                <h3 className="h1 pl-3 pb-3">FAQ</h3>
+                                <h3 className="h1 pl-3 pb-3" id="faq">FAQ</h3>
 
-                                <div class="content">
-                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" id="headingOne" role="tab">
-                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="pull-right fa fa-plus pr-3"></i>How big is Central Park?</a></h4>
+                                <div className="content">
+                                    <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div className="panel panel-default">
+                                            <div className="panel-heading" id="headingOne" role="tab">
+                                                <h4 className="panel-title"><a className="faq-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i className="pull-right fa fa-plus pr-3"></i>How big is Central Park?</a></h4>
                                             </div>
-                                            <div class="panel-collapse collapse in" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
-                                                <div class="panel-body">
+                                            <div className="panel-collapse collapse in" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+                                                <div className="panel-body">
                                                     <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" id="headingTwo" role="tab">
-                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="pull-right fa fa-plus pr-3"></i>How long does is take to cycle around Central Park?</a></h4>
+                                        <div className="panel panel-default">
+                                            <div className="panel-heading" id="headingTwo" role="tab">
+                                                <h4 className="panel-title"><a className="faq-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i className="pull-right fa fa-plus pr-3"></i>How long does is take to cycle around Central Park?</a></h4>
                                             </div>
-                                            <div class="panel-collapse collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
-                                                <div class="panel-body">
+                                            <div className="panel-collapse collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
+                                                <div className="panel-body">
                                                     <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" id="headingThree" role="tab">
-                                                <h4 class="panel-title"><a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="pull-right fa fa-plus pr-3"></i>How fit do I need to be for the bike tour?</a></h4>
+                                        <div className="panel panel-default">
+                                            <div className="panel-heading" id="headingThree" role="tab">
+                                                <h4 className="panel-title"><a className="faq-title collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i className="pull-right fa fa-plus pr-3"></i>How fit do I need to be for the bike tour?</a></h4>
                                             </div>
-                                            <div class="panel-collapse collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
-                                                <div class="panel-body">
+                                            <div className="panel-collapse collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
+                                                <div className="panel-body">
                                                     <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
                                                 </div>
                                             </div>

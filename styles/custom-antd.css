@@ -10803,9 +10803,9 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-month-panel .ant-picker-c
   margin-right: 12px;
 }
 
-.ant-tabs-tab+.ant-tabs-tab {
+/* .ant-tabs-tab+.ant-tabs-tab {
   margin: 0 0 0 32px;
-}
+} */
 
 .ant-tabs-content {
   display: flex;
@@ -22511,18 +22511,18 @@ textarea.ant-mentions {
   pointer-events: none;
   position: relative;
   top: 100px;
-  /* width: auto; */
+  width: auto;
   /* max-width: calc(100vw - 32px); */
-  width: 800px !important;
+  /* width: 800px !important; */
   margin: 0 auto;
   padding-bottom: 24px;
 }
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   .ant-modal {
     width: auto !important;
   }
-}
+} */
 
 .ant-modal.ant-zoom-enter, .ant-modal.antzoom-appear {
   transform: none;
