@@ -16,7 +16,7 @@ export default function BootstrapCarousel() {
 
     useEffect(() => {
         // carousel
-        $('#recipeCarousel').carousel({
+        $('#recipeCarousel2').carousel({
             interval: 10000
         })
 
@@ -77,7 +77,7 @@ export default function BootstrapCarousel() {
                 <div className="container text-center my-3">
                     {/* <h2 className="font-weight-light">Bootstrap 4 - Multi Item Carousel</h2> */}
                     <div className="row mx-auto my-auto">
-                        <div id="recipeCarousel" className="carousel slide w-100" data-ride="carousel">
+                        <div id="recipeCarousel2" className="carousel slide w-100" data-ride="carousel">
                             <div className="carousel-inner inner-v2 w-100" role="listbox">
 
                                 {/* {data?.map((post) =>
@@ -86,9 +86,9 @@ export default function BootstrapCarousel() {
                                 <div className="carousel-item v2 active">
                                     <div className="col-md-4">
                                         <div className="text-left">
-                                            <a className="text-post" href="https://www.centralparktours.net/blog/best-cafes-and-tea-houses-in-central-park/">
-                                                <img style={{ width: '1097px', height: '732' }} className="img-post img-fluid" src="/images/tavern_on_the_green-1.jpg" />
-                                                Best Cafes and Tea Houses in Central Park
+                                            <a className="text-post" href="https://www.centralparktours.net/blog/bicycling-in-central-park/">
+                                                <img style={{ width: '1097px', height: '732' }} className="img-post img-fluid" src="/images/autumn.jpg" />
+                                                Bicycling in Central Park
                                             </a>
                                         </div>
                                     </div>
@@ -96,9 +96,9 @@ export default function BootstrapCarousel() {
                                 <div className="carousel-item v2">
                                     <div className="col-md-4 col-xs-12">
                                         <div className="text-left">
-                                            <a className="text-post" href="https://www.centralparktours.net/blog/part-1-establishment-and-early-history/">
-                                                <img className="img-post img-fluid" src="/images/natural-history.jpg" />
-                                                American Museum of Natural History
+                                            <a className="text-post" href="https://www.centralparktours.net/blog/central-park-on-budget-six-free-things-to-do-in-the-warm-months/">
+                                                <img className="img-post img-fluid" src="/images/free-things.jpg" />
+                                                Free things to do in Central Park
                                             </a>
                                         </div>
                                     </div>
@@ -106,9 +106,9 @@ export default function BootstrapCarousel() {
                                 <div className="carousel-item v2">
                                     <div className="col-md-4 col-xs-12">
                                         <div className="text-left">
-                                            <a className="text-post" href="https://www.centralparktours.net/blog/american-museum-of-natural-history-permanent-exhibitions/">
-                                                <img className="img-post img-fluid" src="/images/american-museum.jpg" />
-                                                American Museum of Natural History – permanent exhibitions
+                                            <a className="text-post" href="https://www.centralparktours.net/blog/central-park-wildlife/">
+                                                <img className="img-post img-fluid" src="/images/green-lawn.jpg" />
+                                                Central Park Wildlife
                                             </a>
                                         </div>
                                     </div>

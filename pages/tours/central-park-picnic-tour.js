@@ -9,10 +9,24 @@ import setMinutes from "date-fns/setMinutes";
 import "react-datepicker/dist/react-datepicker.css";
 import { useWindowScroll } from '@mantine/hooks';
 import { Affix, Button, Text, Transition } from '@mantine/core';
+import emailjs from 'emailjs-com';
 
 // import StripeCheckout from '../components/makqti'
 
 export default function Single() {
+
+    function sendEmail(e) {
+        e.preventDefault();
+
+        emailjs.sendForm('service_azblda7', 'template_0ni70ar', e.target, 'user_eW5yZ8izC59xnly9aF67d')
+            .then((result) => {
+                console.log(result.text);
+                // setShow(true);
+
+            }, (error) => {
+                console.log(error.text);
+            });
+    }
 
     const [scroll, scrollTo] = useWindowScroll();
     const [val, setValue] = useState(1);
@@ -30,7 +44,8 @@ export default function Single() {
         kids: 1,
         subtotal: 0,
         total: 0,
-        tax: 0
+        tax: 0,
+        tourDate: startDate,
     })
 
     const CustomInput = React.forwardRef(({ value, onClick }, ref) => {
@@ -136,7 +151,7 @@ export default function Single() {
                                 {(transitionStyles) => (
                                     <div className="sidebar" id="picnincs-sidebar" style={transitionStyles}>
                                         <div className="container">
-                                            <form>
+                                            <form onSubmit={sendEmail}>
                                                 {/* <div onClick={hhhandle}>CLICK</div> */}
                                                 <div className="row pt-4 justify-content-center">
                                                     <div className="col text-center">
@@ -146,25 +161,26 @@ export default function Single() {
                                                         </div>
                                                         <div className="checkout-form">
                                                             <div className="form-group centered-row">
-                                                                <input className="form-control" placeholder="First & Last Name" type="text" />
+                                                                <input className="form-control" name="names" placeholder="First & Last Name" type="text" />
                                                             </div>
                                                             <div className="form-group centered-row">
-                                                                <input className="form-control" placeholder="Phone" type="text" />
+                                                                <input className="form-control" name="phone-number" placeholder="Phone" type="number" />
                                                             </div>
                                                             <div className="form-group centered-row">
-                                                                <input className="form-control" placeholder="Email" type="text" />
+                                                                <input className="form-control" name="user_email" placeholder="Email" type="email" />
                                                             </div>
 
                                                             <div className="form-group centered-row">
                                                                 <p className="t-title" style={{ fontSize: 12 }}>Number Of Guests</p>
                                                                 <br></br>
                                                                 <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids > 1 ? count.kids - 1 : 0 })}>-</div>
-                                                                <input className="counter-field" type="number" value={count.kids} />
+                                                                <input className="counter-field" name="number_of_guests" type="number" value={count.kids} />
                                                                 <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids + 1 })}>+</div>
                                                             </div>
                                                             <div className="form-group">
                                                                 <DatePicker
                                                                     className="form-control"
+                                                                    name="date_and_time"
                                                                     selected={startDate}
                                                                     onChange={(date) => (setStartDate(date), setCount({ ...count, tourDate: date }))}
                                                                     showTimeSelect
@@ -175,9 +191,10 @@ export default function Single() {
                                                                     customInput={<CustomInput />}
 
                                                                 />
+                                                                <input type="hidden" value={count.tourDate} name="datetime" />
                                                             </div>
                                                             <div className="form-group centered-row">
-                                                                <textarea className="form-control" placeholder="Your Notes" >
+                                                                <textarea className="form-control" name="message" placeholder="Your Notes" >
                                                                 </textarea>
 
                                                             </div>

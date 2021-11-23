@@ -6,13 +6,21 @@ import Footer from '../components/Footer'
 import BikeTourCard from '../components/BikeTourCard'
 import PedicabTourCard from '../components/PedicabTourCard'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import emailjs from 'emailjs-com';
 
 export default function Home() {
 
-
   const recaptchaRef = React.createRef();
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs.sendForm('service_azblda7', 'template_0ni70ar', e.target, 'user_eW5yZ8izC59xnly9aF67d')
+      .then((result) => {
+        console.log(result.text);
+        // setShow(true);
+
+      }, (error) => {
+        console.log(error.text);
+      });
     // Execute the reCAPTCHA when the form is submitted
     recaptchaRef.current.execute();
   };
@@ -255,16 +263,16 @@ export default function Home() {
                   />
                   <img className="cpt-circle" src="/images/cpt-circle.png" />
                   <div className="d-flex pb-5">
-                    <input type="text" className="form-control mr-3" placeholder="First name" />
-                    <input type="text" className="form-control" placeholder="Last name" />
+                    <input type="text" className="form-control mr-3" name="user_name" placeholder="First name" />
+                    <input type="text" className="form-control" name="user_lastname" placeholder="Last name" />
                   </div>
 
                   <div className="d-flex pb-4">
-                    <input type="email" className="form-control mr-3" placeholder="Email" />
-                    <input type="number" className="form-control" placeholder="Phone" />
+                    <input type="email" className="form-control mr-3" name="contact_email" placeholder="Email" />
+                    <input type="number" className="form-control" name="contact_number" placeholder="Phone" />
                   </div>
 
-                  <textarea className="form-control" placeholder="Message">
+                  <textarea className="form-control" name="message" placeholder="Message">
                   </textarea>
 
                   <button className="btn-contact text-uppercase mt-5">Submit Request</button>

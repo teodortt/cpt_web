@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Tabs } from 'antd';
 import BootstrapCarousel from './BootstrapCarousel';
+import BootstrapCarousel2 from './BootstrapCarousel2';
+import BootstrapCarousel3 from './BootstrapCarousel3';
+
 // import dynamic from 'next/dynamic'
 // const CarouselTabs = dynamic(() => import('./CarouselTabs'),
 //   { ssr: false }
@@ -84,7 +87,7 @@ const TabsComponent = () => {
         {/* splide js carousel */}
         <div className="pb-5 mb-5">
 
-
+          <BootstrapCarousel2 />
           {/* <CarouselTabs /> */}
         </div>
 
@@ -94,6 +97,7 @@ const TabsComponent = () => {
         {/* Content of Tab Pane 3 */}
         <div className="pb-5 mb-5">
 
+          <BootstrapCarousel3 />
           {/* <CarouselTabs /> */}
         </div>
       </TabPane>
