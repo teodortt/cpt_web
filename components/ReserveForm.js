@@ -116,7 +116,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
                             <DatePicker
                                 className="form-control"
                                 selected={startDate}
-                                onChange={(date) => setStartDate(date)}
+                                onChange={(date) => (setStartDate(date), setCount({ ...count, tourDate: date }))}
                                 showTimeSelect
                                 minDate={new Date()}
                                 minTime={setHours(setMinutes(new Date(), 0), 9)}
@@ -172,7 +172,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
                             </div>
                             <div className="form-group centered-row pb-2">
                                 <Elements stripe={stripeProme}>
-                                    <CheckoutForm onSuccessfulCheckout={() => Router.push("/success")} formData={formData} startDate={startDate} count={count} ref={childRef} />
+                                    <CheckoutForm onSuccessfullCheckout={() => Router.push("/success")} formData={formData} startDate={startDate} count={count} ref={childRef} />
                                 </Elements>
                                 {/* <input className="form-control" type="number" placeholder="Card" {...register("Card", { required: true })} /> */}
                                 {/* <input className="form-control" placeholder="Card Number" type="text" /> */}

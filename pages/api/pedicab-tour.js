@@ -2,10 +2,10 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const adultsPrice = 59;
-const kidsPrice = 49;
+const adultsPrice = 53;
+const kidsPrice = 51;
 const adultsPrice_2h = 89;
-const kidsPrice_2h = 85;
+const kidsPrice_2h = 87;
 let subtotalPrice;
 let totalPrice;
 let taxPrice;

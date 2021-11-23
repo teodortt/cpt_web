@@ -91,7 +91,7 @@ export default function ReserveBtn({ setHours, setMinutes, startDate, setStartDa
                                 <DatePicker
                                     className="form-control"
                                     selected={startDate}
-                                    onChange={(date) => setStartDate(date)}
+                                    onChange={(date) => (setStartDate(date), setCount({ ...count, tourDate: date }))}
                                     showTimeSelect
                                     minDate={new Date()}
                                     minTime={setHours(setMinutes(new Date(), 0), 9)}

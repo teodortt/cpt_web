@@ -6,7 +6,7 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 
-export const CheckoutForm = React.forwardRef(({ formData, startDate, count, onSuccessfulCheckout }, ref) => {
+export const CheckoutForm = React.forwardRef(({ formData, startDate, count, onSuccessfullCheckout }, ref) => {
 
     React.useImperativeHandle(ref, () => ({
 
@@ -34,7 +34,9 @@ export const CheckoutForm = React.forwardRef(({ formData, startDate, count, onSu
         const cardElement = elements.getElement("card");
 
         try {
-            const { data: clientSecret } = await axios.post(count.tour === 'bike-tour' ? '/api/payment_intents' : '/api/pedicab_payment', {
+            // const { data: clientSecret } = await axios.post(count.tour === 'bike-tour' ? '/api/payment_intents' : '/api/pedicab_payment', {
+
+            const { data: clientSecret } = await axios.post(`/api/${count.tour}`, {
                 amount: count,
                 metadata: formData
             });
@@ -67,7 +69,7 @@ export const CheckoutForm = React.forwardRef(({ formData, startDate, count, onSu
                 return;
             }
 
-            onSuccessfulCheckout();
+            onSuccessfullCheckout();
         } catch (err) {
             setCheckoutError(err.message);
         }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import fire from '../components/fire'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -25,7 +25,7 @@ const Login = () => {
 
         setUsername('')
         setPassword('')
-        Router.push("/check")
+        router.push("/check")
     }
 
     return (

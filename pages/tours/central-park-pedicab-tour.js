@@ -57,7 +57,8 @@ export default function Single() {
         tax: 0,
         discount: null,
         discountCode: '',
-        tour: "pedicab-tour"
+        tour: "pedicab-tour",
+        tourDate: startDate,
     })
 
     const CustomInput = React.forwardRef(({ value, onClick }, ref) => {
@@ -191,7 +192,7 @@ export default function Single() {
                                                             <DatePicker
                                                                 className="form-control"
                                                                 selected={startDate}
-                                                                onChange={(date) => setStartDate(date)}
+                                                                onChange={(date) => (setStartDate(date), setCount({ ...count, tourDate: date }))}
                                                                 showTimeSelect
                                                                 minDate={new Date()}
                                                                 minTime={setHours(setMinutes(new Date(), 0), 9)}
@@ -223,7 +224,7 @@ export default function Single() {
                                                             <input className="counter-field" type="text" value={count.duration + " h"} />
                                                             <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration < 2 ? count.duration + 1 : 2 })}>+</div>
                                                         </div>
-                                                        <p className="text-uppercase" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
+                                                        <p className="text-uppercase" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$53</b> usd</p>
                                                         {/* <button className="btn-reserve">Reserve</button> */}
                                                         <PedicabReserveForm setHours={setHours} setMinutes={setMinutes} startDate={startDate} setStartDate={setStartDate} count={count} setCount={setCount} />
 

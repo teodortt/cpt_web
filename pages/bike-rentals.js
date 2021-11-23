@@ -53,13 +53,16 @@ export default function Single() {
     const [count, setCount] = useState({
         adults: 1,
         kids: 1,
+        baskets: 0,
+        locks: 0,
         duration: 1,
         subtotal: 0,
         total: 0,
         tax: 0,
         discount: null,
         discountCode: '',
-        tour: "bike-rental"
+        tour: "bike-rental",
+        tourDate: startDate,
     })
 
     const CustomInput = React.forwardRef(({ value, onClick }, ref) => {
@@ -217,7 +220,7 @@ export default function Single() {
                                                             <DatePicker
                                                                 className="form-control"
                                                                 selected={startDate}
-                                                                onChange={(date) => setStartDate(date)}
+                                                                onChange={(date) => (setStartDate(date), setCount({ ...count, tourDate: date }))}
                                                                 showTimeSelect
                                                                 minDate={new Date()}
                                                                 minTime={setHours(setMinutes(new Date(), 0), 9)}
@@ -241,15 +244,27 @@ export default function Single() {
                                                             <input className="counter-field" type="number" value={count.kids} />
                                                             <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids + 1 })}>+</div>
                                                         </div>
+                                                        <div className="form-group centered-row">
+                                                            <p className="t-title">Baskets</p>
+                                                            <div className="btn-counter" onClick={(e) => setCount({ ...count, baskets: count.baskets > 1 ? count.baskets - 1 : 0 })}>-</div>
+                                                            <input className="counter-field" type="number" value={count.baskets} />
+                                                            <div className="btn-counter" onClick={(e) => setCount({ ...count, baskets: count.baskets + 1 })}>+</div>
+                                                        </div>
+                                                        <div className="form-group centered-row">
+                                                            <p className="t-title">Locks</p>
+                                                            <div className="btn-counter" onClick={(e) => setCount({ ...count, locks: count.locks > 1 ? count.locks - 1 : 0 })}>-</div>
+                                                            <input className="counter-field" type="number" value={count.locks} />
+                                                            <div className="btn-counter" onClick={(e) => setCount({ ...count, locks: count.locks + 1 })}>+</div>
+                                                        </div>
                                                         {/* <p className="t-title">Bike Tour - <b> 2 Hours</b></p> */}
                                                         <p className="t-title">Duration</p>
 
                                                         <div className="form-group centered-row">
                                                             <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration > 1 ? count.duration - 1 : 1 })}>-</div>
-                                                            <input className="counter-field" type="text" value={count.duration + " h"} />
-                                                            <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration < 3 ? count.duration + 1 : 3 })}>+</div>
+                                                            <input className="counter-field" style={{ width: '100px' }} type="text" value={count.duration < 4 ? count.duration + " h" : 'All day'} />
+                                                            <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration < 4 ? count.duration + 1 : 4 })}>+</div>
                                                         </div>
-                                                        <p className="text-uppercase" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
+                                                        <p className="text-uppercase" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$15</b> usd</p>
                                                         {/* <button className="btn-reserve">Reserve</button> */}
                                                         <BikeRentalsForm setHours={setHours} setMinutes={setMinutes} startDate={startDate} setStartDate={setStartDate} count={count} setCount={setCount} />
 

@@ -79,6 +79,10 @@ export default function BootstrapCarousel() {
                     <div className="row mx-auto my-auto">
                         <div id="recipeCarousel" className="carousel slide w-100" data-ride="carousel">
                             <div className="carousel-inner inner-v2 w-100" role="listbox">
+
+                                {/* {data?.map((post) =>
+                                    (<>{post.feature_image}</>)
+                                )}   */}
                                 <div className="carousel-item v2 active">
                                     <div className="col-md-4">
                                         <div className="text-left">

@@ -39,7 +39,8 @@ export default function ReserveForm({ }) {
         tax: 0,
         discount: null,
         discountCode: '',
-        tour: "bike-tour"
+        tour: "bike-tour",
+        tourDate: startDate,
     })
 
     const [formData, setFormData] = useState([]);
@@ -139,18 +140,18 @@ export default function ReserveForm({ }) {
                         <div className="form-group centered-row">
                             <p className="t-title">Adults (16+)</p>
                             <div className="btn-counter" onClick={(e) => setCount({ ...count, adults: count.adults > 1 ? count.adults - 1 : 0 })}>-</div>
-                            <input className="counter-field" type="number" defaultValue={count.adults} />
+                            <input className="counter-field" type="number" value={count.adults} />
                             <div className="btn-counter" onClick={(e) => setCount({ ...count, adults: count.adults + 1 })}>+</div>
 
                         </div>
                         <div className="form-group centered-row">
                             <p className="t-title">Kids (5+)</p>
                             <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids > 1 ? count.kids - 1 : 0 })}>-</div>
-                            <input className="counter-field" type="number" defaultValue={count.kids} />
+                            <input className="counter-field" type="number" value={count.kids} />
                             <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids + 1 })}>+</div>
                         </div>
                         <p className="t-title">Duration <b> 2h</b></p>
-                        <p className="text-uppercase pb-3" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
+                        <p className="text-uppercase pb-3" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$53</b> usd</p>
                         <button className="btn-reserve" type="button" onClick={() => setIsModalVisible(true)}>Continue</button>
                         {/* <ReserveBtn total={val} /> */}
 

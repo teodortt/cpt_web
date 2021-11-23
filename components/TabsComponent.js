@@ -18,49 +18,49 @@ const TabsComponent = () => {
 
 
 
-//   useEffect(()=>{
-//     // carousel
-//   $('#recipeCarousel').carousel({
-//     interval: 10000
-//   })
-  
-//   $('.carousel .carousel-item').each(function(){
-//       var minPerSlide = 3;
-//       var next = $(this).next();
-//       if (!next.length) {
-//       next = $(this).siblings(':first');
-//       }
-//       next.children(':first-child').clone().appendTo($(this));
-      
-//       for (var i=0;i<minPerSlide;i++) {
-//           next=next.next();
-//           if (!next.length) {
-//             next = $(this).siblings(':first');
-//           }
-          
-//           next.children(':first-child').clone().appendTo($(this));
-//         }
-//   });
+  //   useEffect(()=>{
+  //     // carousel
+  //   $('#recipeCarousel').carousel({
+  //     interval: 10000
+  //   })
 
-//   //with vanilla js
-// //   let items = document.querySelectorAll('.carousel .carousel-item')
+  //   $('.carousel .carousel-item').each(function(){
+  //       var minPerSlide = 3;
+  //       var next = $(this).next();
+  //       if (!next.length) {
+  //       next = $(this).siblings(':first');
+  //       }
+  //       next.children(':first-child').clone().appendTo($(this));
 
-// // items.forEach((el) => {
-// //     // number of slides per carousel-item
-// //     const minPerSlide = 4
-// //     let next = el.nextElementSibling
-// //     for (var i=1; i<minPerSlide; i++) {
-// //         if (!next) {
-// //             // wrap carousel by using first child
-// //             next = items[0]
-// //         }
-// //         let cloneChild = next.cloneNode(true)
-// //         el.appendChild(cloneChild.children[0])
-// //         next = next.nextElementSibling
-// //     }
-// // })
-//   // end carousel
-// },[])
+  //       for (var i=0;i<minPerSlide;i++) {
+  //           next=next.next();
+  //           if (!next.length) {
+  //             next = $(this).siblings(':first');
+  //           }
+
+  //           next.children(':first-child').clone().appendTo($(this));
+  //         }
+  //   });
+
+  //   //with vanilla js
+  // //   let items = document.querySelectorAll('.carousel .carousel-item')
+
+  // // items.forEach((el) => {
+  // //     // number of slides per carousel-item
+  // //     const minPerSlide = 4
+  // //     let next = el.nextElementSibling
+  // //     for (var i=1; i<minPerSlide; i++) {
+  // //         if (!next) {
+  // //             // wrap carousel by using first child
+  // //             next = items[0]
+  // //         }
+  // //         let cloneChild = next.cloneNode(true)
+  // //         el.appendChild(cloneChild.children[0])
+  // //         next = next.nextElementSibling
+  // //     }
+  // // })
+  //   // end carousel
+  // },[])
 
 
 
@@ -73,9 +73,9 @@ const TabsComponent = () => {
       <TabPane tab={<button className={`btn-tab py-2 mx-3  ${keys === '1' ? 'active-t' : ''} text-uppercase`}>Recent</button>} key="1">
         {/* Content of Tab Pane 1 */}
 
-          {/* <CarouselTabs /> */}
+        {/* <CarouselTabs /> */}
 
-<BootstrapCarousel/>
+        <BootstrapCarousel />
 
       </TabPane>
 

@@ -67,7 +67,8 @@ export default function Single() {
         tax: 0,
         discount: null,
         discountCode: '',
-        tour: "bike-tour"
+        tour: "bike-tour",
+        tourDate: startDate,
     })
 
     const CustomInput = React.forwardRef(({ value, onClick }, ref) => {
@@ -220,7 +221,7 @@ export default function Single() {
                                                             <DatePicker
                                                                 className="form-control"
                                                                 selected={startDate}
-                                                                onChange={(date) => setStartDate(date)}
+                                                                onChange={(date) => (setStartDate(date), setCount({ ...count, tourDate: date }))}
                                                                 showTimeSelect
                                                                 minDate={new Date()}
                                                                 // minTime={setHours(setMinutes(new Date(), 0), 10)}

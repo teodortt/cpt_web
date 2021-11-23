@@ -65,14 +65,22 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
     const kidsPrice_2h = 18;
     const adultsPrice_3h = 25;
     const kidsPrice_3h = 23;
+    const adultsPrice_ALL = 40;
+    const kidsPrice_ALL = 38;
+    const basketPrice = 1;
+    const lockPrice = 2;
     let subtotalPrice;
     let totalPrice;
     let taxPrice;
     const taxRate = 8.875 / 100;
 
     function calculateTotalPrice(count) {
+
+        let baskets = count.baskets * basketPrice;
+        let locks = count.locks * lockPrice;
+
         if (count.duration === 1) {
-            subtotalPrice = count.adults * adultsPrice + count.kids * kidsPrice;
+            subtotalPrice = count.adults * adultsPrice + count.kids * kidsPrice + baskets + locks;
             totalPrice = subtotalPrice + subtotalPrice * taxRate;
             taxPrice = subtotalPrice * taxRate;
             if (count.discount) {
@@ -84,7 +92,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
         }
         if (count.duration === 2) {
 
-            subtotalPrice = count.adults * adultsPrice_2h + count.kids * kidsPrice_2h;
+            subtotalPrice = count.adults * adultsPrice_2h + count.kids * kidsPrice_2h + baskets + locks;
             totalPrice = subtotalPrice + subtotalPrice * taxRate;
             taxPrice = subtotalPrice * taxRate;
             if (count.discount) {
@@ -96,7 +104,19 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
         }
         if (count.duration === 3) {
 
-            subtotalPrice = count.adults * adultsPrice_3h + count.kids * kidsPrice_3h;
+            subtotalPrice = count.adults * adultsPrice_3h + count.kids * kidsPrice_3h + baskets + locks;
+            totalPrice = subtotalPrice + subtotalPrice * taxRate;
+            taxPrice = subtotalPrice * taxRate;
+            if (count.discount) {
+                let discountedPrice = totalPrice - (totalPrice * count.discount / 100)
+                setCount({ ...count, subtotal: subtotalPrice, total: discountedPrice, tax: taxPrice });
+            } else {
+                setCount({ ...count, subtotal: subtotalPrice, total: totalPrice, tax: taxPrice });
+            }
+        }
+        if (count.duration === 4) {
+
+            subtotalPrice = count.adults * adultsPrice_ALL + count.kids * kidsPrice_ALL + baskets + locks;
             totalPrice = subtotalPrice + subtotalPrice * taxRate;
             taxPrice = subtotalPrice * taxRate;
             if (count.discount) {
@@ -110,7 +130,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
 
     useEffect(() => {
         calculateTotalPrice(count);
-    }, [count.adults, count.kids, count.discount, count.duration])
+    }, [count.adults, count.kids, count.discount, count.duration, count.baskets, count.locks])
 
     // discounts
     async function discount() {
@@ -137,7 +157,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
         <div onClick={showModal} className={`btn-reserve ${mobileModalVisible ? 'm-checkout' : ''}`}>Reserve</div>
         <Modal visible={mobileModalVisible} width={370} onCancel={() => setMobileModalVisible(false)} footer={null}>
             <form>
-
+                {/* <div onClick={hhhandle}>CLICK</div> */}
                 <div className="row pt-4 justify-content-center">
                     <div className="col text-center">
                         <p className="book-title">Book Now</p>
@@ -145,7 +165,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
                             <DatePicker
                                 className="form-control"
                                 selected={startDate}
-                                onChange={(date) => setStartDate(date)}
+                                onChange={(date) => (setStartDate(date), setCount({ ...count, tourDate: date }))}
                                 showTimeSelect
                                 minDate={new Date()}
                                 minTime={setHours(setMinutes(new Date(), 0), 9)}
@@ -154,6 +174,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
                                 customInput={<CustomInput />}
 
                             />
+                            {/* <input className="form-control" type="datetime-local" id="datepicker" /> */}
                         </div>
                         <div className="form-group centered-row">
                             <p className="t-title">Adults (16+)</p>
@@ -168,10 +189,29 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
                             <input className="counter-field" type="number" value={count.kids} />
                             <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids + 1 })}>+</div>
                         </div>
-                        <p className="t-title">Duration <b> 2h</b></p>
-                        <p className="text-uppercase pb-3" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
+                        <div className="form-group centered-row">
+                            <p className="t-title">Baskets</p>
+                            <div className="btn-counter" onClick={(e) => setCount({ ...count, baskets: count.baskets > 1 ? count.baskets - 1 : 0 })}>-</div>
+                            <input className="counter-field" type="number" value={count.baskets} />
+                            <div className="btn-counter" onClick={(e) => setCount({ ...count, baskets: count.baskets + 1 })}>+</div>
+                        </div>
+                        <div className="form-group centered-row">
+                            <p className="t-title">Locks</p>
+                            <div className="btn-counter" onClick={(e) => setCount({ ...count, locks: count.locks > 1 ? count.locks - 1 : 0 })}>-</div>
+                            <input className="counter-field" type="number" value={count.locks} />
+                            <div className="btn-counter" onClick={(e) => setCount({ ...count, locks: count.locks + 1 })}>+</div>
+                        </div>
+                        {/* <p className="t-title">Bike Tour - <b> 2 Hours</b></p> */}
+                        <p className="t-title">Duration</p>
+
+                        <div className="form-group centered-row">
+                            <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration > 1 ? count.duration - 1 : 1 })}>-</div>
+                            <input className="counter-field" type="text" value={count.duration + " h"} />
+                            <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration < 3 ? count.duration + 1 : 3 })}>+</div>
+                        </div>
+                        <p className="text-uppercase" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
+                        {/* <button className="btn-reserve">Reserve</button> */}
                         <button className="btn-reserve" type="button" onClick={() => setIsModalVisible(true)}>Continue</button>
-                        {/* <ReserveBtn total={val} /> */}
 
                     </div>
                 </div>
@@ -201,7 +241,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
                             </div>
                             <div className="form-group centered-row pb-2">
                                 <Elements stripe={stripeProme}>
-                                    <CheckoutForm onSuccessfulCheckout={() => Router.push("/success")} formData={formData} startDate={startDate} count={count} ref={childRef} />
+                                    <CheckoutForm onSuccessfullCheckout={() => Router.push({ pathname: "/success", query: { id: "test" } })} formData={formData} startDate={startDate} count={count} ref={childRef} />
                                 </Elements>
                                 {/* <input className="form-control" type="number" placeholder="Card" {...register("Card", { required: true })} /> */}
                                 {/* <input className="form-control" placeholder="Card Number" type="text" /> */}

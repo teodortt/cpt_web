@@ -34,12 +34,14 @@ export default function ReserveForm({ }) {
     const [count, setCount] = useState({
         adults: 1,
         kids: 1,
+        duration: 1,
         subtotal: 0,
         total: 0,
         tax: 0,
         discount: null,
         discountCode: '',
-        tour: "bike-tour"
+        tour: "pedicab-tour",
+        tourDate: startDate,
     })
 
     const [formData, setFormData] = useState([]);
@@ -131,7 +133,7 @@ export default function ReserveForm({ }) {
                             <DatePicker
                                 className="form-control"
                                 selected={startDate}
-                                onChange={(date) => setStartDate(date)}
+                                onChange={(date) => (setStartDate(date), setCount({ ...count, tourDate: date }))}
                                 showTimeSelect
                                 minDate={new Date()}
                                 minTime={setHours(setMinutes(new Date(), 0), 9)}
@@ -154,7 +156,12 @@ export default function ReserveForm({ }) {
                             <input className="counter-field" type="number" value={count.kids} />
                             <div className="btn-counter" onClick={(e) => setCount({ ...count, kids: count.kids + 1 })}>+</div>
                         </div>
-                        <p className="t-title">Duration <b> 2h</b></p>
+                        <p className="t-title">Duration</p>
+                        <div className="form-group centered-row">
+                            <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration > 1 ? count.duration - 1 : 1 })}>-</div>
+                            <input className="counter-field" type="text" value={count.duration + " h"} />
+                            <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration < 2 ? count.duration + 1 : 2 })}>+</div>
+                        </div>
                         <p className="text-uppercase pb-3" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
                         <button className="btn-reserve" type="button" onClick={() => setIsModalVisible(true)}>Continue</button>
                         {/* <ReserveBtn total={val} /> */}
@@ -187,10 +194,9 @@ export default function ReserveForm({ }) {
                             </div>
                             <div className="form-group centered-row pb-2">
                                 <Elements stripe={stripeProme}>
-                                    <CheckoutForm onSuccessfulCheckout={() => Router.push("/success")} formData={formData} startDate={startDate} count={count} ref={childRef} />
+                                    <CheckoutForm onSuccessfullCheckout={() => Router.push("/success")} formData={formData} startDate={startDate} count={count} ref={childRef} />
                                 </Elements>
-                                {/* <input className="form-control" type="number" placeholder="Card" {...register("Card", { required: true })} /> */}
-                                {/* <input className="form-control" placeholder="Card Number" type="text" /> */}
+
                             </div>
                             <p className="checked">{count.discount && 'You received ' + count.discount + '% discount!'}</p>
                         </div>
