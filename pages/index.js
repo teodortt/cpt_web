@@ -6,17 +6,30 @@ import Footer from '../components/Footer'
 import BikeTourCard from '../components/BikeTourCard'
 import PedicabTourCard from '../components/PedicabTourCard'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import Link from 'next/link'
 import emailjs from 'emailjs-com';
+import { notification } from 'antd';
 
 export default function Home() {
+
+  const openNotification = placement => {
+    notification.info({
+      message: 'Successfully sent!',
+      description:
+        'Your message was successfully sent!',
+      placement,
+    });
+  };
 
   const recaptchaRef = React.createRef();
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_azblda7', 'template_0ni70ar', e.target, 'user_eW5yZ8izC59xnly9aF67d')
+    emailjs.sendForm('service_azblda7', 'template_bzxj848', e.target, 'user_eW5yZ8izC59xnly9aF67d')
       .then((result) => {
         console.log(result.text);
         // setShow(true);
+        openNotification('bottomRight')
+        e.target.reset()
 
       }, (error) => {
         console.log(error.text);
@@ -72,7 +85,7 @@ export default function Home() {
   return (
     <div>
 
-      <NavBar />
+      <NavBar title="Central Park Tours - The Official Central Park Tour Company" />
 
       <div className="container-fluid bg-cpt pl-0 pr-0">
 
@@ -128,7 +141,7 @@ export default function Home() {
 
               <div className="col-5 text-right">
                 <br></br>
-                <div id="explore" className="font-weight-bold text-uppercase underlined pt-3">View All</div>
+                <div id="explore" className="font-weight-bold text-uppercase underlined pt-3"><Link href="/attractions">View All</Link></div>
               </div>
 
             </div>

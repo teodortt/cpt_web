@@ -165,7 +165,7 @@ export default function Single() {
                 <div className="container" style={{ paddingTop: '200px', paddingBottom: '100px' }}>
                     <div className="row">
                         <div className="col-md-12 col-lg-8">
-                            <h1 style={{ color: '#4c4a4b', textShadow: '2px 0px currentColor' }}>Central Park Bike Tour</h1>
+                            <h1 style={{ color: '#4c4a4b', textShadow: '2px 0px currentColor' }}>Central Park Bike Rental</h1>
 
                             <div className="col d-flex pb-4 pt-1">
                                 <span className="fa fa-star checked"></span>
@@ -206,7 +206,7 @@ export default function Single() {
                         </div>
 
                         <Affix position={{ bottom: 20 }}>
-                            <Transition transition="slide-up" mounted={scroll.y < 3000}>
+                            <Transition transition="slide-up" mounted={scroll.y < 2900}>
                                 {(transitionStyles) => (
                                     <div className="sidebar" id="brental-sidebar" style={transitionStyles}>
 
@@ -324,14 +324,14 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
-                                    <img className="trip-img" src="/images/balto.png" />
+                                    <img className="trip-img" src="/images/the-ramble.png" />
                                 </div>
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left mt-4">
-                                    <h3><b style={{ color: '#535150' }}>1. Balto Statue</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>1. Explore The Ramble</b></h3>
                                     <p>
-                                        This is the famous Balto Statue in Central Park.
-                                        The statue is placed on a rock along the main
-                                        road it was permanently installed there in 1925.
+                                        Connected by the Bow Bridge, the Ramble is a
+                                        36-acre woodland with winding pathways and lush greenery.
+                                        The most famous bird-watching spot in Central Park
                                     </p>
                                 </div>
                             </div>
@@ -347,16 +347,16 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left tour-col1 mt-4">
-                                    <h3><b style={{ color: '#535150' }}>2. Strawberry Fields</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>2. The waterfall in the Ravine</b></h3>
                                     <p>
-                                        This is the famous Balto Statue in Central Park.
-                                        The statue is placed on a rock along the main
-                                        road it was permanently installed there in 1925.
+                                        Located in the north end of Central Park.
+                                        The Ravine is One of the few left secrets in the park.
+                                        Very few people know about it and the fact that there is a waterfall there.
                                     </p>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center tour-col2">
-                                    <img className="trip-img" src="/images/strawberry-fields.png" />
+                                    <img className="trip-img" src="/images/the-ravine.png" />
                                 </div>
 
                             </div>
@@ -367,14 +367,14 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
-                                    <img className="trip-img mr-4" src="/images/tavern-on-the-green.png" />
+                                    <img className="trip-img mr-4" src="/images/sheep-meadow.png" />
                                 </div>
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left mt-4">
-                                    <h3><b style={{ color: '#535150' }}>3. Tavern on the green</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>3. Picnic on Sheep Meadow</b></h3>
                                     <p>
-                                        An iconic restaurant located in a former shepfold.
-                                        Very elegant dining place often frequented by celebrities,
-                                        actors and artists.
+                                        This is the most famous picnic area in Central Park.
+                                        Perfect place to park your bike and enjoy the stunning
+                                        views of New York City. Make sure you bring plenty of water with you.
                                     </p>
                                 </div>
                             </div>
@@ -383,16 +383,16 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left tour-col1 pt-3">
-                                    <h3><b style={{ color: '#535150' }}>4. Columbis circle</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>4. Explore Belvedere Castle</b></h3>
                                     <p>
-                                        This is the famous Balto Statue in Central Park.
-                                        The statue is placed on a rock along the main
-                                        road it was permanently installed there in 1925.
+                                        Located just 2 minutes away from the Shakespeare Garden,
+                                        Belvedere castle is a famous lookout place, overlooking
+                                        the Great Lawn and Turtle Pond. There is also a bike rack near the castle
                                     </p>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center tour-col2">
-                                    <img className="trip-img" src="/images/strawberry-fields.png" />
+                                    <img className="trip-img" src="/images/belvedere-castle.png" />
                                 </div>
 
                             </div>
@@ -408,25 +408,48 @@ export default function Single() {
                                     {/* <!-- slides --> */}
                                     <div className="carousel-inner text-dark">
                                         <div className="carousel-item active">
-                                            {/* <img src="/images/centralparkbiketour.png" alt="Hills"/>  */}
-                                            <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
-                                                ddddfsdfsdfhiudsfbcnikjudfvijk
+                                            <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center', color: '#555555' }}>
+                                                Amazing service, great tours and highly reasonable.
+                                                This is the best way to explore Central Park.
+                                                I will recommend this way to my friends who are
+                                                coming to visit me. We really loved it…
                                             </div>
                                             <div className="carousel-caption d-none d-md-block text-dark">
-                                                <h5>First slide label</h5>
-                                                {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+                                                <h5><i>Ian M</i></h5>
                                             </div>
 
                                         </div>
 
                                         <div className="carousel-item">
-                                            {/* <img src="/images/centralparkbiketour.png" alt="Hills"/> */}
-                                            <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
-                                                aaaaaaaaaaaaaaaaa
+                                            <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center', color: '#555555' }}>
+                                                We rented a few bikes from this place a couple of days ago. Bikes were in good condition . Staff was helpful and they even gave us additional hour for free. Central Park is only a few…
                                             </div>
                                             <div className="carousel-caption d-none d-md-block text-dark">
-                                                <h5>second slide label</h5>
-                                                {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+                                                <h5><i>Gloria E</i></h5>
+                                            </div>
+
+                                        </div>
+                                        <div className="carousel-item">
+                                            <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center', color: '#555555' }}>
+                                                We got really good bikes, with maps, baskets, helmets and locks all almost brand new. We have tried several other renting places in NY and this is absolutely the very best. Very nice and…                                            </div>
+                                            <div className="carousel-caption d-none d-md-block text-dark">
+                                                <h5><i>PGHDA</i></h5>
+                                            </div>
+
+                                        </div>
+                                        <div className="carousel-item">
+                                            <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center', color: '#555555' }}>
+                                                Lots of different size, good quality bikes available. Five of us turned up with very little warning and they provided us with bikes, helmets and baskets and a map. Very helpful and friendly.                                            </div>
+                                            <div className="carousel-caption d-none d-md-block text-dark">
+                                                <h5><i>Jillian W</i></h5>
+                                            </div>
+
+                                        </div>
+                                        <div className="carousel-item">
+                                            <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center', color: '#555555' }}>
+                                                Really happy and friendly staff with some great quality bicycles! The team at Central park even offered us a complimentary bike delivery to our hotel (which was only a couple of blocks…                                            </div>
+                                            <div className="carousel-caption d-none d-md-block text-dark">
+                                                <h5><i>Zdravko Ivanov</i></h5>
                                             </div>
 
                                         </div>
@@ -434,6 +457,10 @@ export default function Single() {
                                         <ol className="carousel-indicators">
                                             <li data-target="#custCarousel2" data-slide-to="0" className="active"></li>
                                             <li data-target="#custCarousel2" data-slide-to="1"></li>
+                                            <li data-target="#custCarousel2" data-slide-to="2"></li>
+                                            <li data-target="#custCarousel2" data-slide-to="3"></li>
+                                            <li data-target="#custCarousel2" data-slide-to="4"></li>
+
                                         </ol>
 
                                     </div>

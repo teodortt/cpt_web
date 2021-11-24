@@ -345,7 +345,7 @@ export default function Single() {
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center tour-col2">
-                                    <img className="trip-img" src="/images/strawberry-fields.png" />
+                                    <img className="trip-img" src="/images/strawberry-fields1.png" />
                                 </div>
 
                             </div>
@@ -381,7 +381,7 @@ export default function Single() {
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center tour-col2">
-                                    <img className="trip-img" src="/images/strawberry-fields.png" />
+                                    <img className="trip-img" src="/images/columbus-circle.png" />
                                 </div>
 
                             </div>

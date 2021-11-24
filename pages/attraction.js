@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import DesktopBikeForm from '../components/Index_Bike_Form'
+import DestkopPedicabForm from '../components/Index_Pedicab_Form'
 
 export default function Attraction() {
 
@@ -161,7 +163,9 @@ export default function Attraction() {
                           View tour
                         </div>
                         <div style={{ fontSize: 12 }} className="col">
-                          <p className="btn-reserve">Book now</p>
+                          {/* <p className="btn-reserve">Book now</p> */}
+                          <DesktopBikeForm />
+
                         </div>
                       </div>
 
@@ -232,7 +236,8 @@ export default function Attraction() {
                           View tour
                         </div>
                         <div style={{ fontSize: 12 }} className="col">
-                          <p className="btn-reserve">Book now</p>
+                          {/* <p className="btn-reserve">Book now</p> */}
+                          <DestkopPedicabForm />
                         </div>
                       </div>
 

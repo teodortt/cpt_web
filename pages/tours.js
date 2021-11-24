@@ -35,7 +35,7 @@ export default function Tours() {
   return (
     <div>
 
-      <NavBar />
+      <NavBar title="Tours - Central Park Tours - The Official Central Park Tour Company" />
 
       <div className="container-fluid bg-tours pl-0 pr-0 pt-5 text-center" style={{ position: "relative" }}>
 

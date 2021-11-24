@@ -10,11 +10,20 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useWindowScroll } from '@mantine/hooks';
 import { Affix, Button, Text, Transition } from '@mantine/core';
 import emailjs from 'emailjs-com';
+import { notification } from 'antd';
 
 // import StripeCheckout from '../components/makqti'
 
 export default function Single() {
 
+    const openNotification = placement => {
+        notification.info({
+            message: 'Successfully sent!',
+            description:
+                'Your message was successfully sent!',
+            placement,
+        });
+    };
     function sendEmail(e) {
         e.preventDefault();
 
@@ -22,6 +31,8 @@ export default function Single() {
             .then((result) => {
                 console.log(result.text);
                 // setShow(true);
+                openNotification('bottomRight')
+                e.target.reset()
 
             }, (error) => {
                 console.log(error.text);
@@ -75,7 +86,7 @@ export default function Single() {
         window.addEventListener('scroll', function () {
             var scrollTop = window.pageYOffset;
             var scrollPercent = scrollTop / scrollArea || 0;
-            if (scrollTop >= 1050 && scrollTop <= 3100) {
+            if (scrollTop >= 900 && scrollTop <= 3100) {
                 square1.style.right = 500 - scrollPercent * window.innerWidth * 0.1 + 'px';
                 square2.style.left = 160 - scrollPercent * window.innerWidth * 0.1 + 'px';
                 square3.style.right = -80 - scrollPercent * window.innerWidth * 0.18 + 'px';
@@ -90,7 +101,7 @@ export default function Single() {
 
     return (
         <div>
-            <div className="container" id="container">
+            <div className="container" id="container" style={{ marginTop: -70 }}>
                 <div className="square square-2"></div>
                 <div className="square square-1"></div>
                 <div className="square square-4"></div>
@@ -147,7 +158,7 @@ export default function Single() {
                         </div>
 
                         <Affix position={{ bottom: 20 }}>
-                            <Transition transition="slide-up" mounted={scroll.y < 3000}>
+                            <Transition transition="slide-up" mounted={scroll.y < 2400}>
                                 {(transitionStyles) => (
                                     <div className="sidebar" id="picnincs-sidebar" style={transitionStyles}>
                                         <div className="container">
@@ -278,14 +289,14 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
-                                    <img className="trip-img" src="/images/balto.png" />
+                                    <img className="trip-img" src="/images/sheep-meadow.png" />
                                 </div>
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left mt-4">
-                                    <h3><b style={{ color: '#535150' }}>1. Balto Statue</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>1. The Sheep Meadow</b></h3>
                                     <p>
-                                        This is the famous Balto Statue in Central Park.
-                                        The statue is placed on a rock along the main
-                                        road it was permanently installed there in 1925.
+                                        This is an iconic picnic spot. Right across from
+                                        Tavern on the Green, Sheep Meadow offers stunning
+                                        views of the Manhattan skyline and lush Kentycky blue grass!
                                     </p>
                                 </div>
                             </div>
@@ -301,16 +312,16 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left tour-col1 mt-4">
-                                    <h3><b style={{ color: '#535150' }}>2. Strawberry Fields</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>2. Cherry Hill</b></h3>
                                     <p>
-                                        This is the famous Balto Statue in Central Park.
-                                        The statue is placed on a rock along the main
-                                        road it was permanently installed there in 1925.
+                                        Located right next to one of the most romantic spots in
+                                        the park - Wagner Cove. The meadow near Cherry Hills
+                                        offers a stunning view of the Lake and the San Remo Building.
                                     </p>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center tour-col2">
-                                    <img className="trip-img" src="/images/strawberry-fields.png" />
+                                    <img className="trip-img" src="/images/cherry-hill.png" />
                                 </div>
 
                             </div>
@@ -321,14 +332,14 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
-                                    <img className="trip-img mr-4" src="/images/tavern-on-the-green.png" />
+                                    <img className="trip-img mr-4" src="/images/the-ramble.png" />
                                 </div>
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left mt-4">
-                                    <h3><b style={{ color: '#535150' }}>3. Tavern on the green</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>3. The Ramble</b></h3>
                                     <p>
-                                        An iconic restaurant located in a former shepfold.
-                                        Very elegant dining place often frequented by celebrities,
-                                        actors and artists.
+                                        This is definitely for the adventurous!
+                                        Just head to this green sanctuary and
+                                        find a place to throw a blanket
                                     </p>
                                 </div>
                             </div>
@@ -337,50 +348,46 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left tour-col1 pt-3">
-                                    <h3><b style={{ color: '#535150' }}>4. Columbis circle</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>4. The North Meadow</b></h3>
                                     <p>
-                                        This is the famous Balto Statue in Central Park.
-                                        The statue is placed on a rock along the main
-                                        road it was permanently installed there in 1925.
+                                        This spot is located in the north and perfect if
+                                        you are looking to avoid the crowds.
+                                        Keep in mind that Central Park is huge so
+                                        make sure you plan your transportation.
                                     </p>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center tour-col2">
-                                    <img className="trip-img" src="/images/strawberry-fields.png" />
+                                    <img className="trip-img" src="/images/north-meadow.png" />
                                 </div>
 
                             </div>
 
 
-                            <div className="text-center pt-5 mt-5" style={{ color: '#535150' }}>
+                            {/* <div className="text-center pt-5 mt-5" style={{ color: '#535150' }}>
                                 <h2>What people say</h2>
                                 <h6>about this tour</h6>
                                 <hr style={{ border: '3px solid #88bc2c', borderRadius: 50, width: 100 }} />
 
                                 <div id="custCarousel2" className="carousel slide" data-ride="carousel" align="center">
 
-                                    {/* <!-- slides --> */}
                                     <div className="carousel-inner text-dark">
                                         <div className="carousel-item active">
-                                            {/* <img src="/images/centralparkbiketour.png" alt="Hills"/>  */}
                                             <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
                                                 ddddfsdfsdfhiudsfbcnikjudfvijk
                                             </div>
                                             <div className="carousel-caption d-none d-md-block text-dark">
                                                 <h5>First slide label</h5>
-                                                {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                                             </div>
 
                                         </div>
 
                                         <div className="carousel-item">
-                                            {/* <img src="/images/centralparkbiketour.png" alt="Hills"/> */}
                                             <div style={{ width: 400, height: 300, justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
                                                 aaaaaaaaaaaaaaaaa
                                             </div>
                                             <div className="carousel-caption d-none d-md-block text-dark">
                                                 <h5>second slide label</h5>
-                                                {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
                                             </div>
 
                                         </div>
@@ -391,11 +398,10 @@ export default function Single() {
                                         </ol>
 
                                     </div>
-                                    {/* <!-- Left right -->  */}
                                     <a className="carousel-control-prev" href="#custCarousel2" data-slide="prev"> <span className="carousel-control-prev-icon"></span> </a> <a className="carousel-control-next" href="#custCarousel2" data-slide="next"> <span className="carousel-control-next-icon"></span> </a>
 
                                 </div>
-                            </div>
+                            </div> */}
 
 
                             <div className="text-left pt-5 mt-5" style={{ color: '#535150' }}>
@@ -405,31 +411,51 @@ export default function Single() {
                                     <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                         <div className="panel panel-default">
                                             <div className="panel-heading" id="headingOne" role="tab">
-                                                <h4 className="panel-title"><a className="faq-title-r collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i className="pull-right fa fa-plus pr-3"></i>How big is Central Park?</a></h4>
+                                                <h4 className="panel-title"><a className="faq-title-r collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i className="pull-right fa fa-plus pr-3"></i>What type of food is included in the picnic basket?</a></h4>
                                             </div>
                                             <div className="panel-collapse collapse in" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
                                                 <div className="panel-body">
-                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    <p>We have a wide variety of food choices as we work with the top food catering companies in Midtown Manhattan. The basic basket consists of a choice of sandwich, soda, selection of cheeses, kalamata olives, orange juice, water and soda. However, since we work with the top ranked food providers, we can go much more extravagant! Please contact our representative to discuss your perfect food choice..</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="panel panel-default">
                                             <div className="panel-heading" id="headingTwo" role="tab">
-                                                <h4 className="panel-title"><a className="faq-title-r collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i className="pull-right fa fa-plus pr-3"></i>How long does is take to cycle around Central Park?</a></h4>
+                                                <h4 className="panel-title"><a className="faq-title-r collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i className="pull-right fa fa-plus pr-3"></i>Is It allowed to drink alcoholic beverages in Central Park?</a></h4>
                                             </div>
                                             <div className="panel-collapse collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
                                                 <div className="panel-body">
-                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    <p>Consuming alcoholic beverages is not permitted in Central Park. Although a lot of people do it and it definitely seems normal to our European guests, you are not allowed to have an open container in the park. You can order alcoholic beverages from our suppliers but consuming in the park is your responsibility.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="panel panel-default">
                                             <div className="panel-heading" id="headingThree" role="tab">
-                                                <h4 className="panel-title"><a className="faq-title-r collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i className="pull-right fa fa-plus pr-3"></i>How fit do I need to be for the bike tour?</a></h4>
+                                                <h4 className="panel-title"><a className="faq-title-r collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i className="pull-right fa fa-plus pr-3"></i>What if we want to stay longer. Can we order additional items?</a></h4>
                                             </div>
                                             <div className="panel-collapse collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
                                                 <div className="panel-body">
-                                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+                                                    <p>Certainly! Our cargo bikes are constantly in Central Park. Just contact our rep and we will coordinate everything. There will be an additional charge associated with the new items and delivery service.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="panel panel-default">
+                                            <div className="panel-heading" id="headingFour" role="tab">
+                                                <h4 className="panel-title"><a className="faq-title-r collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><i className="pull-right fa fa-plus pr-3"></i>We had a great time! What type of transportation is available after the picnic?</a></h4>
+                                            </div>
+                                            <div className="panel-collapse collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingFour">
+                                                <div className="panel-body">
+                                                    <p>Yes, we offer many transportation options in Central Park. In case you don’t want to walk, you can pick from a pedicab ride (links), bike rental andan electric scooter. What’s awesome is that you don’t need to come to a store to pick up your bicycle/scooter. We will dispatch one of our agents who will deliver the bicycle/scooter.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="panel panel-default">
+                                            <div className="panel-heading" id="headingFive" role="tab">
+                                                <h4 className="panel-title"><a className="faq-title-r collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive"><i className="pull-right fa fa-plus pr-3"></i>I am planning a teambuilding event in Central Park. Can you help with that?</a></h4>
+                                            </div>
+                                            <div className="panel-collapse collapse" id="collapseFive" role="tabpanel" aria-labelledby="headingFive">
+                                                <div className="panel-body">
+                                                    <p>Yes, please contact us for more information and package deals.</p>
                                                 </div>
                                             </div>
                                         </div>

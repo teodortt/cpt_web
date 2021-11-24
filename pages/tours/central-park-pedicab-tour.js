@@ -299,16 +299,16 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left tour-col1 mt-4">
-                                    <h3><b style={{ color: '#535150' }}>2. Strawberry Fields</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>2. The Carousel</b></h3>
                                     <p>
-                                        This is the famous Balto Statue in Central Park.
-                                        The statue is placed on a rock along the main
-                                        road it was permanently installed there in 1925.
+                                        A beloved Central Park tradition for almost 150 years.
+                                        The Carousel consists of 57 hand-carved and painted Horses.
+                                        Also one of the largest carousels in the USA
                                     </p>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center tour-col2">
-                                    <img className="trip-img" src="/images/strawberry-fields.png" />
+                                    <img className="trip-img" src="/images/the-carousel.png" />
                                 </div>
                             </div>
 
@@ -318,14 +318,14 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
-                                    <img className="trip-img mr-4" src="/images/tavern-on-the-green.png" />
+                                    <img className="trip-img mr-4" src="/images/bethesda-fountain.png" />
                                 </div>
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left mt-4">
-                                    <h3><b style={{ color: '#535150' }}>3. Tavern on the green</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>3. Bethesda Fountain</b></h3>
                                     <p>
-                                        An iconic restaurant located in a former shepfold.
-                                        Very elegant dining place often frequented by celebrities,
-                                        actors and artists.
+                                        One of the most beautiful spots in Central Park.
+                                        Located in the perfect center of the island.
+                                        It opens a mesmarizing view of the Lake and the famous row boats
                                     </p>
                                 </div>
                             </div>
@@ -334,16 +334,17 @@ export default function Single() {
                             <div className="row align-items-center">
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-left tour-col1 pt-3">
-                                    <h3><b style={{ color: '#535150' }}>4. Columbis circle</b></h3>
+                                    <h3><b style={{ color: '#535150' }}>4. Bow Bridge</b></h3>
                                     <p>
-                                        This is the famous Balto Statue in Central Park.
-                                        The statue is placed on a rock along the main
-                                        road it was permanently installed there in 1925.
+                                        One of Central Park’s most romantic spots!
+                                        Connecting Bethesda Terrace with the Ramble.
+                                        It is also the first and most famous cast-iron
+                                        bridges in Central Park.
                                     </p>
                                 </div>
 
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center tour-col2">
-                                    <img className="trip-img" src="/images/strawberry-fields.png" />
+                                    <img className="trip-img" src="/images/bow-bridge.png" />
                                 </div>
 
                             </div>
@@ -423,6 +424,10 @@ export default function Single() {
                                         <ol className="carousel-indicators">
                                             <li data-target="#custCarousel2" data-slide-to="0" className="active"></li>
                                             <li data-target="#custCarousel2" data-slide-to="1"></li>
+                                            <li data-target="#custCarousel2" data-slide-to="2"></li>
+                                            <li data-target="#custCarousel2" data-slide-to="3"></li>
+                                            <li data-target="#custCarousel2" data-slide-to="4"></li>
+
                                         </ol>
 
                                     </div>
