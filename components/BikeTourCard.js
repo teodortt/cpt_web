@@ -11,13 +11,15 @@ const BikeTourCard = () => {
                 <div className="carousel-inner">
                     <div className="carousel-item active">
                         <img className="d-block w-100 card-img-top1" src="/images/bike-tour-central-park.jpg" alt="First slide" />
-
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100 card-img-top1" src="/images/bike-tour-central-park.jpg" alt="Second slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/bike3.jpg" alt="Third slide" />
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100 card-img-top1" src="/images/bike-tour-central-park.jpg" alt="Third slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/bike4.jpg" alt="Four slide" />
+                    </div>
+                    <div className="carousel-item">
+                        <img className="d-block w-100 card-img-top1" src="/images/bike5.jpg" alt="Five slide" />
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

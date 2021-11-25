@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Tabs } from 'antd';
-import BootstrapCarousel from './BootstrapCarousel';
-import BootstrapCarousel2 from './BootstrapCarousel2';
-import BootstrapCarousel3 from './BootstrapCarousel3';
+import { Events } from "./posts_events";
+import { Tours } from "./posts_tours";
+import { Things } from "./posts_thing_to_do";
+
 
 // import dynamic from 'next/dynamic'
 // const CarouselTabs = dynamic(() => import('./CarouselTabs'),
@@ -14,7 +15,7 @@ const TabsComponent = () => {
   const [keys, setKey] = useState('1');
 
   function callback(key) {
-    console.log(key);
+    // console.log(key);
     setKey(key);
   }
 
@@ -76,9 +77,7 @@ const TabsComponent = () => {
       <TabPane tab={<button className={`btn-tab py-2 mx-3  ${keys === '1' ? 'active-t' : ''} text-uppercase`}>Recent</button>} key="1">
         {/* Content of Tab Pane 1 */}
 
-        {/* <CarouselTabs /> */}
-
-        <BootstrapCarousel />
+        <Events />
 
       </TabPane>
 
@@ -87,8 +86,7 @@ const TabsComponent = () => {
         {/* splide js carousel */}
         <div className="pb-5 mb-5">
 
-          <BootstrapCarousel2 />
-          {/* <CarouselTabs /> */}
+          <Tours />
         </div>
 
       </TabPane>
@@ -97,8 +95,7 @@ const TabsComponent = () => {
         {/* Content of Tab Pane 3 */}
         <div className="pb-5 mb-5">
 
-          <BootstrapCarousel3 />
-          {/* <CarouselTabs /> */}
+          <Things />
         </div>
       </TabPane>
     </Tabs >

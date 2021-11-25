@@ -75,11 +75,13 @@ export default function Home() {
         $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
       }
     });
-  });
+  }, []);
 
   useEffect(() => {
     document.documentElement.scrollTop = 1;
-
+    $("#navbarSupportedContent a:not(.dropdown-toggle)").on("click", function () {
+      $("#navbarSupportedContent").collapse("hide");
+    });
   }, [])
 
   return (
@@ -141,7 +143,7 @@ export default function Home() {
 
               <div className="col-5 text-right">
                 <br></br>
-                <div id="explore" className="font-weight-bold text-uppercase underlined pt-3"><Link href="/attractions">View All</Link></div>
+                <div id="explore" className="font-weight-bold text-uppercase underlined pt-3"><Link href="/tours">View All</Link></div>
               </div>
 
             </div>

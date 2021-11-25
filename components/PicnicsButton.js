@@ -39,7 +39,7 @@ export default function ReserveBtn({ setHours, setMinutes, startDate, setStartDa
     }
 
     const adultsPrice = 59;
-    const kidsPrice = 49;
+    const kidsPrice = 57;
     let subtotalPrice;
     let totalPrice;
     let taxPrice;

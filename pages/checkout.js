@@ -11,16 +11,7 @@ const stripeProme = loadStripe(
 
 const Home = () => {
     const [status, setStatus] = useState("");
-    console.log("status", status);
 
-    // debugger;
-    if (status === "success") {
-        return <div>Thank you for your purchase!</div>;
-    }
-
-    if (status.includes("Something went wrong")) {
-        return <div>Something went wrong</div>;
-    }
 
     return (
         <Elements stripe={stripeProme}>

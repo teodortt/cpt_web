@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../../components/NavBar'
 import Footer from '../../components/Footer'
-import ReserveForm from '../../components/ReserveForm'
+import ReserveForm from '../../components/BikeToursReserveForm'
 // import ReserveMobile from '../components/ReserveMobile'
 import DatePicker from "react-datepicker";
 import setHours from "date-fns/setHours";
@@ -23,33 +23,9 @@ const stripeProme = loadStripe(
 // import StripeCheckout from '../components/makqti'
 
 export default function Single() {
-    const [status, setStatus] = useState("");
-    console.log("status", status);
     const [indicator, setIndicator] = useState(1);
 
     const [scroll, scrollTo] = useWindowScroll();
-
-
-    // debugger;
-    if (status === "success") {
-        return <div>Thank you for your purchase!</div>;
-    }
-
-    if (status.includes("Something went wrong")) {
-        return <div>Something went wrong</div>;
-    }
-
-    const [price, setPrice] = useState(7);
-    const [open, setOpen] = useState(false);
-
-    const [val, setValue] = useState(1);
-
-    const handleValue = (e) => {
-        setValue(e.target.value)
-        console.log('valueeeee' + val)
-        setCount({ ...count, adults: count.adults + 1 })
-        console.log(count)
-    }
     const [startDate, setStartDate] = useState(
         setHours(setMinutes(new Date(), 30), 9));
     const filterPassedTime = (time) => {
@@ -69,6 +45,9 @@ export default function Single() {
         discountCode: '',
         tour: "bike-tour",
         tourDate: startDate,
+        name: '',
+        email: '',
+        phone: ''
     })
 
     const CustomInput = React.forwardRef(({ value, onClick }, ref) => {
@@ -123,35 +102,12 @@ export default function Single() {
         });
 
     }, [])
-    //   useEffect(() => {
-    //     $(function () {
-    //       if ($(window).width() > 991) {
 
-    //         $(window).on('scroll', function () {
-
-    //           if ($(window).scrollTop() > 10) {
-    //             $('.navbar').addClass('active');
-    //             $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
-
-    //           } else {
-    //             $('.navbar').removeClass('active');
-    //             $('#cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "150");
-    //           }
-    //         });
-    //       } else {
-    //         $('.navbar').addClass('active');
-    //         $('#cpt-logo').attr("src", '/images/logo-green.png').attr("width", "100");
-    //       }
-    //     });
-    //   });
 
     useEffect(() => {
         document.documentElement.scrollTop = 1;
 
     }, [])
-    const hhhandle = () => {
-        console.log(startDate)
-    }
 
     return (
         <div>
@@ -163,7 +119,7 @@ export default function Single() {
                 <div className="square square-5"></div>
             </div>
 
-            <NavBar />
+            <NavBar title="Bike Tours - Central Park Tours - The Official Central Park Tour Company" />
             <div className="container-fluid bg-single-tour pl-0 pr-0">
 
                 {/* <StripeCheckout /> */}

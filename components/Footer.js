@@ -1,3 +1,4 @@
+import Link from 'next/link'
 const Footer = () => (
     <footer className="footer" id="footer">
         <div className="container bottom_border">
@@ -5,27 +6,29 @@ const Footer = () => (
                 <div className=" col-sm-4 col-md col-sm-4  col-12 col text-left">
                     <h5 className="headin5_amrc col_white_amrc pt2">INFORMATION</h5>
                     {/* <p className="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p> */}
-                    <p>Audio Tours</p>
-                    <p>Calendar</p>
-                    <p>Apply for a scholarship</p>
+                    <ul className="footer_ul_amrc">
+                        <li><Link href="/scholarship">Apply for a scholarship</Link></li>
+                        <p>Audio Tours - Soon!</p>
+                        <p>Calendar - Soon!</p>
+                    </ul>
                 </div>
 
                 <div className=" col-sm-4 col-md  col-6 col text-left">
                     <h5 className="headin5_amrc col_white_amrc pt2">TOURS</h5>
                     <ul className="footer_ul_amrc">
-                        <li><a href="http://webenlance.com">Bike tour</a></li>
-                        <li><a href="http://webenlance.com">Pedicab tour</a></li>
-                        <li><a href="http://webenlance.com">E-Scooter tour</a></li>
-                        <li><a href="http://webenlance.com">Bike rentals</a></li>
-                        <li><a href="http://webenlance.com">Picnics</a></li>
+                        <li><Link href="/tours/central-park-bike-tour">Bike tour</Link></li>
+                        <li><Link href="/tours/central-park-pedicab-tour">Pedicab tour</Link></li>
+                        {/* <li><Link href="/tours">E-Scooter tour</Link></li> */}
+                        <li><Link href="/bike-rentals">Bike rentals</Link></li>
+                        <li><Link href="/tours/central-park-picnic-tour">Picnics</Link></li>
                     </ul>
                 </div>
 
                 <div className=" col-sm-4 col-md  col-6 col text-left">
                     <h5 className="headin5_amrc col_white_amrc pt2">LEGAL</h5>
                     <ul className="footer_ul_amrc">
-                        <li><a href="http://webenlance.com">Cancellation policy</a></li>
-                        <li><a href="http://webenlance.com">Terms and conditions</a></li>
+                        <li><Link href="/cancellation-policy">Cancellation policy</Link></li>
+                        <li><Link href="/terms-and-conditions">Terms and conditions</Link></li>
                     </ul>
                 </div>
 
@@ -48,9 +51,9 @@ const Footer = () => (
                     </ul>
 
                     <ul style={{ listStyleType: 'none' }} className="d-flex social_f">
-                        <li><a className="m-1" href="http://webenlance.com"><i className="fab fa-facebook-f"></i></a></li>
-                        <li><a className="m-1" href="http://webenlance.com"><i className="fab fa-twitter"></i></a></li>
-                        <li><a className="m-1" href="http://webenlance.com"><i className="fab fa-instagram"></i></a></li>
+                        <li className="btn-link checked"><Link className="m-1" href="http://fb.com/centralparktours"><i className="fab fa-facebook-f"></i></Link></li>
+                        <li className="btn-link checked"><Link className="m-1" href="http://twitter.com/centralparktour"><i className="fab fa-twitter"></i></Link></li>
+                        <li className="btn-link checked"><Link className="m-1" href="http://instagram.com/centralparktours"><i className="fab fa-instagram"></i></Link></li>
                     </ul>
 
                 </div>

@@ -14,7 +14,7 @@ const NavBar = ({ title }) => {
     const [navLogo, setNavLogo] = React.useState('');
 
     function catchRoute() {
-        if (currentRoute === '/' || currentRoute === '/tours' || currentRoute === '/attractions') {
+        if (currentRoute === '/' || currentRoute === '/tours' || currentRoute === '/attractions' || currentRoute.includes('/attraction')) {
             setNavClass('nav-link')
             setNavLogo('cpt-logo')
         } else {
@@ -31,13 +31,15 @@ const NavBar = ({ title }) => {
         <>
             <Head>
                 <title>{title}</title>
-                {/* <title>Central Park Tours - The Official Central Park Tour Company</title> */}
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet" />
-                {/* <link href="/bootstrap.min.css" rel="stylesheet" />
-            <script src="/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
-            <script src="/bootstrap.bundle.min.js" type="text/javascript"></script>
-            <link rel="stylesheet" href="/css/all.css" /> */}
+                <meta name="description" content="Central Park Tours is the biggest company for guided tours in New York's Central Park. We offer bicycle tours, pedicab rides, walking tours and bicycle rentals" />
+                <meta name="keywords" content="central park, bike tours, bike rentals, pedicab tours, walking tours, ny attractions, new york" />
+                <meta name="geo.region" content="US-NY" />
+                <meta name="geo.placename" content="New York" />
+                <meta name="geo.position" content="40.7646452;-73.9822423" />
+                <meta name="ICBM" content="40.7646452, -73.9822423" />
+                <meta name="p:domain_verify" content="fa2b3e0c33fb4e013e4f9e6136c96a11" />
+                <meta name="msvalidate.01" content="98DFA2586746E84DE25C0DD44D07B94D" />
+
                 <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet" />
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
                 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" type="text/javascript"></script>

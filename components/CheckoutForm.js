@@ -46,9 +46,9 @@ export const CheckoutForm = React.forwardRef(({ formData, startDate, count, onSu
                 card: cardElement,
                 billing_details: {
 
-                    "email": formData.email,
-                    "name": formData.names,
-                    "phone": formData.phone
+                    "email": count.email,
+                    "name": count.name,
+                    "phone": count.phone
                 },
 
             });

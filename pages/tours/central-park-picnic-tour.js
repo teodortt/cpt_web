@@ -40,14 +40,7 @@ export default function Single() {
     }
 
     const [scroll, scrollTo] = useWindowScroll();
-    const [val, setValue] = useState(1);
 
-    const handleValue = (e) => {
-        setValue(e.target.value)
-        console.log('valueeeee' + val)
-        setCount({ ...count, adults: count.adults + 1 })
-        console.log(count)
-    }
     const [startDate, setStartDate] = useState(
         setHours(setMinutes(new Date(), 30), 9));
     const [count, setCount] = useState({
@@ -109,7 +102,7 @@ export default function Single() {
                 <div className="square square-5"></div>
             </div>
 
-            <NavBar />
+            <NavBar title="Picnics in The Park - Central Park Tours - The Official Central Park Tour Company" />
             <div className="container-fluid bg-single-tour pl-0 pr-0">
 
                 {/* <StripeCheckout /> */}

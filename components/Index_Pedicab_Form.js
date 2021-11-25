@@ -42,6 +42,9 @@ export default function ReserveForm({ }) {
         discountCode: '',
         tour: "pedicab-tour",
         tourDate: startDate,
+        name: '',
+        email: '',
+        phone: ''
     })
 
     const [formData, setFormData] = useState([]);
@@ -49,7 +52,13 @@ export default function ReserveForm({ }) {
     const [code, setCode] = useState('');
     // const [percent, setPercent] = useState(null);
     const onSubmit = data => setFormData(data);
-    console.log(errors);
+    //console.log(errors);
+
+    const onHandleChange = (e) => {
+        setCount({ ...count, [e.target.name]: e.target.value });
+        // setInputValues({ [e.target.name]: e.target.value })
+        console.log({ [e.target.name]: e.target.value });
+    }
 
     const childRef = React.useRef();
 
@@ -76,23 +85,38 @@ export default function ReserveForm({ }) {
         console.log(startDate)
     }
 
-    const adultsPrice = 59;
-    const kidsPrice = 49;
+    const adultsPrice = 53;
+    const kidsPrice = 51;
+    const adultsPrice_2h = 89;
+    const kidsPrice_2h = 87;
     let subtotalPrice;
     let totalPrice;
     let taxPrice;
     const taxRate = 8.875 / 100;
 
     function calculateTotalPrice(count) {
-        subtotalPrice = count.adults * adultsPrice + count.kids * kidsPrice;
-        totalPrice = subtotalPrice + subtotalPrice * taxRate;
-        taxPrice = subtotalPrice * taxRate;
-        if (count.discount) {
-            let discountedPrice = totalPrice - (totalPrice * count.discount / 100)
-            setCount({ ...count, subtotal: subtotalPrice, total: discountedPrice, tax: taxPrice });
+        if (count.duration < 2) {
+            subtotalPrice = count.adults * adultsPrice + count.kids * kidsPrice;
+            totalPrice = subtotalPrice + subtotalPrice * taxRate;
+            taxPrice = subtotalPrice * taxRate;
+            if (count.discount) {
+                let discountedPrice = totalPrice - (totalPrice * count.discount / 100)
+                setCount({ ...count, subtotal: subtotalPrice, total: discountedPrice, tax: taxPrice });
+            } else {
+                setCount({ ...count, subtotal: subtotalPrice, total: totalPrice, tax: taxPrice });
+            }
         } else {
-            setCount({ ...count, subtotal: subtotalPrice, total: totalPrice, tax: taxPrice });
-            // console.log('subtotal ' + subtotal + 'total ' + total);
+
+            subtotalPrice = count.adults * adultsPrice_2h + count.kids * kidsPrice_2h;
+            totalPrice = subtotalPrice + subtotalPrice * taxRate;
+            taxPrice = subtotalPrice * taxRate;
+            if (count.discount) {
+                let discountedPrice = totalPrice - (totalPrice * count.discount / 100)
+                setCount({ ...count, subtotal: subtotalPrice, total: discountedPrice, tax: taxPrice });
+            } else {
+                setCount({ ...count, subtotal: subtotalPrice, total: totalPrice, tax: taxPrice });
+            }
+
         }
     }
 
@@ -162,7 +186,7 @@ export default function ReserveForm({ }) {
                             <input className="counter-field" type="text" value={count.duration + " h"} />
                             <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration < 2 ? count.duration + 1 : 2 })}>+</div>
                         </div>
-                        <p className="text-uppercase pb-3" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
+                        <p className="text-uppercase pb-3" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$53</b> usd</p>
                         <button className="btn-reserve" type="button" onClick={() => setIsModalVisible(true)}>Continue</button>
                         {/* <ReserveBtn total={val} /> */}
 
@@ -182,19 +206,19 @@ export default function ReserveForm({ }) {
                         <div className="checkout-form">
 
                             <div className="form-group centered-row pb-2">
-                                <input className="form-control" type="text" placeholder={errors.names?.type === 'required' ? "First & Last Names are required!" : "First & Last Name"}{...register("names", { required: true, maxLength: 80 })} />
+                                <input className="form-control" required onChange={onHandleChange} value={count.name} name="name" type="text" placeholder="First & Last Names" />
                             </div>
 
                             <div className="form-group centered-row pb-2">
-                                <input className="form-control" type="text" placeholder={errors.email?.type === 'required' ? "Email address is required!" : "Email address"} {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                                <input className="form-control" required onChange={onHandleChange} value={count.email} name="email" type="text" placeholder="Email Address" />
                             </div>
 
                             <div className="form-group centered-row pb-2">
-                                <input className="form-control" type="tel" placeholder={errors.phone?.type === 'required' ? "Phone number is required!" : "Phone"} {...register("phone", { required: true, maxLength: 12 })} />
+                                <input className="form-control" required onChange={onHandleChange} value={count.phone} name="phone" type="tel" placeholder="Phone Number" />
                             </div>
                             <div className="form-group centered-row pb-2">
                                 <Elements stripe={stripeProme}>
-                                    <CheckoutForm onSuccessfullCheckout={() => Router.push("/success")} formData={formData} startDate={startDate} count={count} ref={childRef} />
+                                    <CheckoutForm onSuccessfullCheckout={() => Router.push({ pathname: "/success", query: { tour: count.tour, adults: count.adults, kids: count.kids, duration: count.duration, tourDate: count.tourDate.toString(), discount: count.discount, baskets: count.baskets, locks: count.locks, subtotal: count.subtotal, tax: count.tax, total: count.total } })} formData={formData} startDate={startDate} count={count} ref={childRef} />
                                 </Elements>
 
                             </div>

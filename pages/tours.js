@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import DesktopBikeForm from '../components/Index_Bike_Form'
+import DestkopPedicabForm from '../components/Index_Pedicab_Form'
+import Link from 'next/link'
 
 export default function Tours() {
 
@@ -25,7 +28,7 @@ export default function Tours() {
         $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
       }
     });
-  });
+  }, []);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -68,13 +71,15 @@ export default function Tours() {
                     <div className="carousel-inner">
                       <div className="carousel-item active">
                         <img className="d-block w-100 card-img-top1" src="/images/bike-tour-central-park.jpg" alt="First slide" />
-
                       </div>
                       <div className="carousel-item">
-                        <img className="d-block w-100 card-img-top1" src="/images/bike-tour-central-park.jpg" alt="Second slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/bike3.jpg" alt="Third slide" />
                       </div>
                       <div className="carousel-item">
-                        <img className="d-block w-100 card-img-top1" src="/images/bike-tour-central-park.jpg" alt="Third slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/bike4.jpg" alt="Four slide" />
+                      </div>
+                      <div className="carousel-item">
+                        <img className="d-block w-100 card-img-top1" src="/images/bike5.jpg" alt="Five slide" />
                       </div>
                     </div>
                     <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -121,10 +126,11 @@ export default function Tours() {
 
                     <div className="row text-uppercase pb-4">
                       <div style={{ fontSize: 12, color: 'silver', fontWeight: 'bold' }} className="col text-left pt-3">
-                        View tour
+                        <Link href="/tours/central-park-bike-tour">View tour</Link>
                       </div>
                       <div style={{ fontSize: 12 }} className="col">
-                        <p className="btn-reserve">Book now</p>
+                        {/* <p className="btn-reserve">Book now</p> */}
+                        <DesktopBikeForm />
                       </div>
                     </div>
 
@@ -138,14 +144,14 @@ export default function Tours() {
                   <div id="carouselExampleControls2" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">
                       <div className="carousel-item active">
-                        <img className="d-block w-100 card-img-top1" src="/images/pedicab-tour-central-park.jpg" alt="First slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/pedicab1.jpg" alt="First slide" />
 
                       </div>
                       <div className="carousel-item">
-                        <img className="d-block w-100 card-img-top1" src="/images/pedicab-tour-central-park.jpg" alt="Second slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/pedicab2.jpg" alt="Second slide" />
                       </div>
                       <div className="carousel-item">
-                        <img className="d-block w-100 card-img-top1" src="/images/pedicab-tour-central-park.jpg" alt="Third slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/pedicab3.jpg" alt="Third slide" />
                       </div>
                     </div>
                     <a className="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
@@ -167,11 +173,10 @@ export default function Tours() {
                     </div>
 
                     <p style={{ fontSize: 14, color: '#8b8b8b' }} className="text-left">
-                      Our bicycle tour has been ranked as one the top 5
-                      things to do in Central Park by TripAdvisor. It is the
-                      only tour that covers the entire length of Central
-                      Park and it provides an excellent overview of the
-                      whole park.
+                      Allow one of our experienced tour guides to show you the beauty
+                      of the park from the back of a pedicab.
+                      Sit down and relax while your tour guide tells you about the history
+                      of the park, architecture and interesting trivia.
                     </p>
 
                     <div className="row text-uppercase">
@@ -192,10 +197,10 @@ export default function Tours() {
 
                     <div className="row text-uppercase pb-4">
                       <div style={{ fontSize: 12, color: 'silver', fontWeight: 'bold' }} className="col text-left pt-3">
-                        View tour
+                        <Link href="/tours/central-park-pedicab-tour">View tour</Link>
                       </div>
                       <div style={{ fontSize: 12 }} className="col">
-                        <p className="btn-reserve">Book now</p>
+                        <DestkopPedicabForm />
                       </div>
                     </div>
 

@@ -3,7 +3,7 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const adultsPrice = 59;
-const kidsPrice = 49;
+const kidsPrice = 57;
 let subtotalPrice;
 let totalPrice;
 let taxPrice;
@@ -35,7 +35,8 @@ export default async (req, res) => {
       const paymentIntent = await stripe.paymentIntents.create({
         amount: calculateTotalPrice(amount),
         currency: "usd",
-        metadata: amount
+        metadata: amount,
+        receipt_email: amount.email
       });
 
       res.status(200).send(paymentIntent.client_secret);

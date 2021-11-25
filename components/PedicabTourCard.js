@@ -10,14 +10,14 @@ const PedicabTourCard = () => {
             <div id="carouselExampleControls2" className="carousel slide" data-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img className="d-block w-100 card-img-top1" src="/images/pedicab-tour-central-park.jpg" alt="First slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/pedicab1.jpg" alt="First slide" />
 
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100 card-img-top1" src="/images/pedicab-tour-central-park.jpg" alt="Second slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/pedicab2.jpg" alt="Second slide" />
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100 card-img-top1" src="/images/pedicab-tour-central-park.jpg" alt="Third slide" />
+                        <img className="d-block w-100 card-img-top1" src="/images/pedicab3.jpg" alt="Third slide" />
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
@@ -39,11 +39,10 @@ const PedicabTourCard = () => {
                 </div>
 
                 <p style={{ fontSize: 14, color: '#8b8b8b' }} className="text-left">
-                    Our bicycle tour has been ranked as one the top 5
-                    things to do in Central Park by TripAdvisor. It is the
-                    only tour that covers the entire length of Central
-                    Park and it provides an excellent overview of the
-                    whole park.
+                    Allow one of our experienced tour guides to show you the beauty
+                    of the park from the back of a pedicab.
+                    Sit down and relax while your tour guide tells you about the history
+                    of the park, architecture and interesting trivia.
                 </p>
 
                 <div className="row text-uppercase">

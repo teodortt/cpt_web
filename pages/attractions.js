@@ -25,7 +25,7 @@ export default function AttractionList() {
         $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
       }
     });
-  });
+  }, []);
 
   useEffect(() => {
     document.documentElement.scrollTop = 1;
@@ -35,7 +35,7 @@ export default function AttractionList() {
   return (
     <div>
 
-      <NavBar />
+      <NavBar title="Attractions - Central Park Tours - The Official Central Park Tour Company" />
 
       <div className="container-fluid bg-tours pl-0 pr-0">
 
@@ -51,9 +51,9 @@ export default function AttractionList() {
         <div className="pt-5 text-white text-center" style={{ position: "relative" }}>
           <div className="py-5 mt-5">
 
-            <h1 className="" style={{ fontWeight: 900, letterSpacing: '2px', fontSize: '50px' }}>Attractions in Central Park</h1>
+            <h1 className="attractions-title" >Attractions in Central Park</h1>
 
-            <p className="lead mb-0 pt-3">
+            <p className="lead mb-0 pt-3 attractions-subtitle">
               <b>Below you will find a list of all major attractions located in Central Park.
                 <br></br>
                 Each attractions is ranked by popularity and accessibility.

@@ -30,9 +30,16 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
     const [formData, setFormData] = useState([]);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [code, setCode] = useState('');
+    const [inputvalues, setInputValues] = useState([]);
     // const [percent, setPercent] = useState(null);
     const onSubmit = data => setFormData(data);
-    console.log(errors);
+    //console.log(errors);
+
+    const onHandleChange = (e) => {
+        setCount({ ...count, [e.target.name]: e.target.value });
+        // setInputValues({ [e.target.name]: e.target.value })
+        console.log({ [e.target.name]: e.target.value });
+    }
 
     const childRef = React.useRef();
 
@@ -145,7 +152,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
             })
                 .then(response => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     data?.data?.percent && setCount({ ...count, discount: data.data.percent, discountCode: data.data.code });
                 })
         } catch (error) {
@@ -209,7 +216,7 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
                             <input className="counter-field" type="text" value={count.duration + " h"} />
                             <div className="btn-counter" onClick={(e) => setCount({ ...count, duration: count.duration < 3 ? count.duration + 1 : 3 })}>+</div>
                         </div>
-                        <p className="text-uppercase" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$59</b> usd</p>
+                        <p className="text-uppercase" style={{ fontSize: 14 }}>Price from <b style={{ fontSize: 24, color: '#313030' }}>$15</b> usd</p>
                         {/* <button className="btn-reserve">Reserve</button> */}
                         <button className="btn-reserve" type="button" onClick={() => setIsModalVisible(true)}>Continue</button>
 
@@ -229,19 +236,19 @@ export default function ReserveForm({ setHours, setMinutes, startDate, setStartD
                         <div className="checkout-form">
 
                             <div className="form-group centered-row pb-2">
-                                <input className="form-control" type="text" placeholder={errors.names?.type === 'required' ? "First & Last Names are required!" : "First & Last Name"}{...register("names", { required: true, maxLength: 80 })} />
+                                <input className="form-control" required onChange={onHandleChange} value={count.name} name="name" type="text" placeholder="First & Last Names" />
                             </div>
 
                             <div className="form-group centered-row pb-2">
-                                <input className="form-control" type="text" placeholder={errors.email?.type === 'required' ? "Email address is required!" : "Email address"} {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                                <input className="form-control" required onChange={onHandleChange} value={count.email} name="email" type="text" placeholder="Email Address" />
                             </div>
 
                             <div className="form-group centered-row pb-2">
-                                <input className="form-control" type="tel" placeholder={errors.phone?.type === 'required' ? "Phone number is required!" : "Phone"} {...register("phone", { required: true, maxLength: 12 })} />
+                                <input className="form-control" required onChange={onHandleChange} value={count.phone} name="phone" type="tel" placeholder="Phone Number" />
                             </div>
                             <div className="form-group centered-row pb-2">
                                 <Elements stripe={stripeProme}>
-                                    <CheckoutForm onSuccessfullCheckout={() => Router.push({ pathname: "/success", query: { id: "test" } })} formData={formData} startDate={startDate} count={count} ref={childRef} />
+                                    <CheckoutForm onSuccessfullCheckout={() => Router.push({ pathname: "/success", query: { tour: count.tour, adults: count.adults, kids: count.kids, duration: count.duration, tourDate: count.tourDate.toString(), discount: count.discount, baskets: count.baskets, locks: count.locks, subtotal: count.subtotal, tax: count.tax, total: count.total } })} formData={formData} startDate={startDate} count={count} ref={childRef} />
                                 </Elements>
                                 {/* <input className="form-control" type="number" placeholder="Card" {...register("Card", { required: true })} /> */}
                                 {/* <input className="form-control" placeholder="Card Number" type="text" /> */}

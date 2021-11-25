@@ -21,31 +21,9 @@ const stripeProme = loadStripe(
 // import StripeCheckout from '../components/makqti'
 
 export default function Single() {
-    const [status, setStatus] = useState("");
-    console.log("status", status);
 
     const [scroll, scrollTo] = useWindowScroll();
 
-    // debugger;
-    if (status === "success") {
-        return <div>Thank you for your purchase!</div>;
-    }
-
-    if (status.includes("Something went wrong")) {
-        return <div>Something went wrong</div>;
-    }
-
-    const [price, setPrice] = useState(7);
-    const [open, setOpen] = useState(false);
-
-    const [val, setValue] = useState(1);
-
-    const handleValue = (e) => {
-        setValue(e.target.value)
-        console.log('valueeeee' + val)
-        setCount({ ...count, adults: count.adults + 1 })
-        console.log(count)
-    }
     const [startDate, setStartDate] = useState(
         setHours(setMinutes(new Date(), 30), 9));
     const [count, setCount] = useState({
@@ -59,6 +37,9 @@ export default function Single() {
         discountCode: '',
         tour: "pedicab-tour",
         tourDate: startDate,
+        name: '',
+        email: '',
+        phone: ''
     })
 
     const CustomInput = React.forwardRef(({ value, onClick }, ref) => {
@@ -111,14 +92,8 @@ export default function Single() {
     }, [])
 
     useEffect(() => {
-        document.title = 'Central Park Bike Tour - CENTRALPARKTOURS.NET';
-    })
-    useEffect(() => {
         document.documentElement.scrollTop = 1;
     }, [])
-    const hhhandle = () => {
-        console.log(startDate)
-    }
 
     return (
         <div>
@@ -131,7 +106,7 @@ export default function Single() {
                 <div className="square square-5"></div>
             </div>
 
-            <NavBar />
+            <NavBar title="Pedicab Tours - Central Park Tours - The Official Central Park Tour Company" />
             <div className="container-fluid bg-single-tour pl-0 pr-0">
 
                 {/* <StripeCheckout /> */}
