@@ -126,25 +126,22 @@ export default function Single() {
                             <div id="custCarousel" className="carousel slide" data-ride="carousel" align="center">
                                 {/* <!-- slides --> */}
                                 <div className="carousel-inner">
-                                    <div className="carousel-item active"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    <div className="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    <div className="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    <div className="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    <div className="carousel-item"> <img src="/images/centralparkbiketour.png" alt="Hills" /> </div>
-                                    {/* <div className="carousel-item"> <img src="https://i.imgur.com/weXVL8M.jpg" alt="Hills"/> </div>
-                    <div className="carousel-item"> <img src="https://i.imgur.com/Rpxx6wU.jpg" alt="Hills"/> </div>
-                    <div className="carousel-item"> <img src="https://i.imgur.com/83fandJ.jpg" alt="Hills"/> </div>
-                    <div className="carousel-item"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" alt="Hills"/> </div> */}
+                                    <div className="carousel-item active"> <img src="/images/picnics-tour-1.jpg" alt="Central Park Picnic Tour" /> </div>
+                                    <div className="carousel-item"> <img src="/images/picnics-tour-2.jpg" alt="Central Park Picnic Tour" /> </div>
+                                    <div className="carousel-item"> <img src="/images/picnics-tour-3.jpg" alt="Central Park Picnic Tour" /> </div>
+                                    <div className="carousel-item"> <img src="/images/picnics-tour-4.jpg" alt="Central Park Picnic Tour" /> </div>
+                                    <div className="carousel-item"> <img src="/images/picnics-tour-5.jpg" alt="Central Park Picnic Tour" /> </div>
+
                                 </div>
                                 {/* <!-- Left right -->  */}
                                 <a className="carousel-control-prev" href="#custCarousel" data-slide="prev"> <span className="carousel-control-prev-icon"></span> </a> <a className="carousel-control-next" href="#custCarousel" data-slide="next"> <span className="carousel-control-next-icon"></span> </a>
                                 {/* <!-- Thumbnails --> */}
                                 <ol className="carousel-indicators list-inline">
-                                    <li style={{ marginRight: 30 }} className="list-inline-item active"> <a id="carousel-selector-0" className="selected" data-slide-to="0" data-target="#custCarousel"> <img src="https://i.imgur.com/weXVL8M.jpg" className="img-fluid" /> </a> </li>
-                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="https://i.imgur.com/Rpxx6wU.jpg" className="img-fluid" /> </a> </li>
-                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="https://i.imgur.com/83fandJ.jpg" className="img-fluid" /> </a> </li>
-                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" className="img-fluid" /> </a> </li>
-                                    <li className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="4" data-target="#custCarousel"> <img src="https://i.imgur.com/JiQ9Ppv.jpg" className="img-fluid" /> </a> </li>
+                                    <li style={{ marginRight: 30 }} className="list-inline-item active"> <a id="carousel-selector-0" className="selected" data-slide-to="0" data-target="#custCarousel"> <img src="/images/600picnics-tour-1.jpg" className="img-fluid" /> </a> </li>
+                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> <img src="/images/600picnics-tour-2.jpg" className="img-fluid" /> </a> </li>
+                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> <img src="/images/600picnics-tour-3.jpg" className="img-fluid" /> </a> </li>
+                                    <li style={{ marginRight: 30 }} className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="3" data-target="#custCarousel"> <img src="/images/600picnics-tour-4.jpg" className="img-fluid" /> </a> </li>
+                                    <li className="list-inline-item"> <a id="carousel-selector-2" data-slide-to="4" data-target="#custCarousel"> <img src="/images/600picnics-tour-5.jpg" className="img-fluid" /> </a> </li>
                                 </ol>
                             </div>
 

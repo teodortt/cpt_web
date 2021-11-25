@@ -25,7 +25,7 @@ const Login = () => {
 
         setUsername('')
         setPassword('')
-        router.push("/check")
+        router.push("/addcode")
     }
 
     return (
