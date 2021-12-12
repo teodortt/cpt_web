@@ -8,30 +8,30 @@ import Link from 'next/link'
 export default function Tours() {
 
 
+  // useEffect(() => {
+  //   $(function () {
+  //     if ($(window).width() > 991) {
+
+  //       $(window).on('scroll', function () {
+
+  //         if ($(window).scrollTop() > 10) {
+  //           $('.navbar').addClass('active');
+  //           $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
+
+  //         } else {
+  //           $('.navbar').removeClass('active');
+  //           $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "125");
+  //         }
+  //       });
+  //     } else {
+  //       $('.navbar').addClass('active');
+  //       $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
+  //     }
+  //   });
+  // }, []);
+
   useEffect(() => {
-    $(function () {
-      if ($(window).width() > 991) {
-
-        $(window).on('scroll', function () {
-
-          if ($(window).scrollTop() > 10) {
-            $('.navbar').addClass('active');
-            $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
-
-          } else {
-            $('.navbar').removeClass('active');
-            $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "125");
-          }
-        });
-      } else {
-        $('.navbar').addClass('active');
-        $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
-      }
-    });
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.scrollTop = 0;
+    document.documentElement.scrollTop = 1;
 
   }, [])
 

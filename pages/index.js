@@ -54,27 +54,30 @@ export default function Home() {
     recaptchaRef.current.reset();
   }
 
+
+
+
   useEffect(() => {
 
-    $(function () {
-      if ($(window).width() > 991) {
+    // $(function () {
+    //   if ($(window).width() > 991) {
 
-        $(window).on('scroll', function () {
+    //     $(window).on('scroll', function () {
 
-          if ($(window).scrollTop() > 10) {
-            $('.navbar').addClass('active');
-            $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
+    //       if ($(window).scrollTop() > 10) {
+    //         $('.navbar').addClass('active');
+    //         $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
 
-          } else {
-            $('.navbar').removeClass('active');
-            $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "125");
-          }
-        });
-      } else {
-        $('.navbar').addClass('active');
-        $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
-      }
-    });
+    //       } else {
+    //         $('.navbar').removeClass('active');
+    //         $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "125");
+    //       }
+    //     });
+    //   } else {
+    //     $('.navbar').addClass('active');
+    //     $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
+    //   }
+    // });
   }, []);
 
   useEffect(() => {
@@ -100,7 +103,7 @@ export default function Home() {
             type="video/mp4" />
         </video>
 
-        <div className="pt-5 text-white text-center" style={{ position: "relative" }}>
+        <div className="text-white text-center" style={{ position: "relative", paddingTop: "10%" }}>
           <div className="py-5 mt-5">
             <h2 className="display-4">Welcome to</h2>
             <h1 className="" style={{ fontFamily: "Arial Black", fontWeight: 900, letterSpacing: '0px', fontSize: '55px' }}>Central Park Tours</h1>

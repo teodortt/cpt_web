@@ -8,24 +8,61 @@ const NavBar = ({ title }) => {
 
 
     const router = useRouter();
-    const currentRoute = router.pathname;
+    const dynamicRoute = useRouter().asPath
 
-    const [navClass, setNavClass] = React.useState('');
-    const [navLogo, setNavLogo] = React.useState('');
+    const currentRoute = router.asPath;
 
-    function catchRoute() {
+    const [navClass, setNavClass] = React.useState('nav-link');
+    const [navbarClass, setNavbarClass] = React.useState(true);
+    const [navLogo, setNavLogo] = React.useState(<img id="cpt-logo" width="90" src="/images/logo-green.png" />);
+
+    let oldScrollY = 10;
+
+    // const [direction, setDirection] = useState('up');
+
+    const controlDirection = () => {
+
         if (currentRoute === '/' || currentRoute === '/tours' || currentRoute === '/attractions' || currentRoute.includes('/attraction')) {
-            setNavClass('nav-link')
-            setNavLogo('cpt-logo')
+
+            if (window.scrollY > 10) {
+                setNavbarClass(true);
+                setNavClass('nav-link ')
+                setNavLogo(<img id="cpt-logo" width="90" src="/images/logo-green.png" />)
+            } else {
+                setNavbarClass(false);
+                setNavClass('nav-link')
+                setNavLogo(<img id="cpt-logo" width="125" src="/images/logo-white-full.png" />)
+            }
         } else {
-            setNavClass('nav-link black-text')
-            setNavLogo('cpt-logo-wh')
+
+            setNavLogo(<img id="cpt-logo" width="90" src="/images/logo-green.png" />)
+            setNavbarClass(true);
+            setNavClass('nav-link ')
         }
+        oldScrollY = window.scrollY;
     }
 
+    React.useState(() => {
+        setNavClass('nav-link');
+        setNavbarClass(true);
+        // setNavLogo(<img id="cpt-logo" width="125" src="/images/logo-white-full.png" />);
+    }, [dynamicRoute])
     React.useEffect(() => {
-        catchRoute();
-    }, [currentRoute])
+        window.innerWidth > 991 && window.addEventListener('scroll', controlDirection);
+        return () => {
+            window.removeEventListener('scroll', controlDirection);
+        };
+    }, []);
+
+    // function urlAppend(value) {
+    //     var current_location = window.location.href;
+    //     current_location += "#about";
+    //     setTimeout(() => window.location.href = current_location, 1000)
+    // }
+
+    const topZero = () => {
+        document.documentElement.scrollTop = 1;
+    }
 
     return (
         <>
@@ -48,25 +85,35 @@ const NavBar = ({ title }) => {
             </Head>
             {/* before header <div> */}
             <header className="header">
-                <nav className={`navbar navbar-expand-lg fixed-top py-1 ${currentRoute === '/' ? '' : 'active'}`}>
+                <nav className={`${navbarClass ? "navbar active" : "navbar"} navbar-expand-lg fixed-top py-1 `}>
                     <div className="container">
                         <span className="navbar-brand text-uppercase font-weight-bold">
                             <Link href="/">
-                                {currentRoute === '/' ? <img id="cpt-logo" className={navLogo} width="125" src="/images/logo-white-full.png" /> : <img id="cpt-logo" className={navLogo} width="90" src="/images/logo-green.png" />}
+                                {navLogo}
                             </Link>
-                            {/* <img id="cpt-logo" className="cpt-logo" width="125" src={currentRoute === '/' ? '/images/logo-white-full.png' : '/images/logo-green.png'} /> */}
                         </span>
                         <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" className="navbar-toggler navbar-toggler-right"><i className="fa fa-bars"></i></button>
 
                         <div id="navbarSupportedContent" className={`collapse navbar-collapse justify-content-center`}>
                             <ul className="navbar-nav">
-                                <li className={currentRoute === '/' ? 'nav-item pl-3 active-l' : 'nav-item pl-3'}><span className={navClass}><Link href="/">Home</Link></span></li>
-                                <li className={currentRoute === '/#about' ? 'nav-item pl-3 active-l' : 'nav-item pl-3'}>{currentRoute === '/' ? <AnchorLink href="#about" className={navClass}>About Us</AnchorLink> : <span className={navClass}><Link href="/#about">About Us</Link></span>}</li>
-                                {/* <li className={currentRoute === '/tours' ? 'nav-item pl-3 active-l' : 'nav-item pl-3'}>
-                                    <span className={navClass}><Link href="/tours">Tours</Link></span>
-                                </li> */}
-                                <li className={currentRoute === '/tours' ? 'dropdown nav-item pl-3 active-l' : 'dropdown nav-item pl-3'}>
-                                    <span className={navClass}><Link href="/tours">Tours</Link></span>
+                                <li className="nav-item pl-3">
+                                    <span className={`${navClass} ${currentRoute === "/" ? "text-green" : ""}`} onClick={topZero}>
+                                        <Link href="/">Home</Link>
+                                    </span>
+                                </li>
+                                <li className="nav-item pl-3">
+                                    {/* {currentRoute === '/' ?
+                                        <AnchorLink href="#about" onClick={urlAppend}
+                                            className={`${navClass} ${currentRoute === "/#about" ? "text-green" : ""}`}
+                                        >About Us
+                                        </AnchorLink> : */}
+                                    <span className={`${navClass} ${currentRoute === "/#about" ? "text-green" : ""}`}>
+                                        <Link href="/#about">About Us</Link>
+                                    </span>
+                                </li>
+
+                                <li className="dropdown nav-item pl-3">
+                                    <span className={`${navClass} ${currentRoute === "/tours" ? "text-green" : ""}`}><Link href="/tours">Tours</Link></span>
                                     <span className="dropdown-content">
                                         <Link href="/tours/central-park-bike-tour">Bike</Link>
                                         <Link href="/tours/central-park-pedicab-tour">Pedicab</Link>
@@ -74,9 +121,9 @@ const NavBar = ({ title }) => {
                                     </span>
                                 </li>
 
-                                <li className={currentRoute === '/bike-rentals' ? 'nav-item pl-3 active-l' : 'nav-item pl-3'}><span className={navClass}><Link href="/bike-rentals">Bike Rentals</Link></span></li>
-                                <li className={currentRoute === '/attraction' ? 'nav-item pl-3 active-l' : 'nav-item pl-3'}><span className={navClass}><Link href="/attractions">Attractions</Link></span></li>
-                                <li className={currentRoute === '/single-tour#faq' ? 'nav-item pl-3 active-l' : 'nav-item pl-3'}><span className={navClass}><Link href="/faq">FAQ</Link></span></li>
+                                <li className="nav-item pl-3"><span className={`${navClass} ${currentRoute === "/bike-rentals" ? "text-green" : ""}`}><Link href="/bike-rentals">Bike Rentals</Link></span></li>
+                                <li className="nav-item pl-3"><span className={`${navClass} ${currentRoute === "/attractions" ? "text-green" : ""}`}><Link href="/attractions">Attractions</Link></span></li>
+                                <li className="nav-item pl-3"><span className={`${navClass} ${currentRoute === "/faq" ? "text-green" : ""}`}><Link href="/faq">FAQ</Link></span></li>
                                 <li className="nav-item pl-3"><span className={navClass}><Link href="https://www.centralparktours.net/blog">Blog</Link></span></li>
                                 <li className="nav-item btn-cpt">{currentRoute === '/' ? <AnchorLink href="#contact" className="nav-link text-light">Contact</AnchorLink> : <span className="nav-link text-light"><Link href="/#contact">Contact</Link></span>}</li>
                             </ul>

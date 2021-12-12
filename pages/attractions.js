@@ -4,33 +4,9 @@ import Footer from '../components/Footer'
 
 export default function AttractionList() {
 
-
-  useEffect(() => {
-    $(function () {
-      if ($(window).width() > 991) {
-
-        $(window).on('scroll', function () {
-
-          if ($(window).scrollTop() > 10) {
-            $('.navbar').addClass('active');
-            $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
-
-          } else {
-            $('.navbar').removeClass('active');
-            $('.cpt-logo').attr("src", '/images/logo-white-full.png').attr("width", "125");
-          }
-        });
-      } else {
-        $('.navbar').addClass('active');
-        $('.cpt-logo').attr("src", '/images/logo-green.png').attr("width", "90");
-      }
-    });
-  }, []);
-
   useEffect(() => {
     document.documentElement.scrollTop = 1;
-
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -38,15 +14,6 @@ export default function AttractionList() {
       <NavBar title="Attractions - Central Park Tours - The Official Central Park Tour Company" />
 
       <div className="container-fluid bg-tours pl-0 pr-0">
-
-
-        {/* <video autoPlay={true} muted
-          className="video"
-          loop id="myVideo">
-          <source src="/images/intro-0-20.webm"
-
-            type="video/mp4" />
-        </video> */}
 
         <div className="pt-5 text-white text-center" style={{ position: "relative" }}>
           <div className="py-5 mt-5">
